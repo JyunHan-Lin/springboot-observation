@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import com.example.demo.model.dto.UserDTO;
 import com.example.demo.model.entity.User;
 import com.example.demo.service.UserLoginService;
+import com.example.demo.util.HashUtil;
 import com.example.demo.dao.UserLoginDAO;
 import com.example.demo.dao.impl.UserLoginDAOImpl;
 
