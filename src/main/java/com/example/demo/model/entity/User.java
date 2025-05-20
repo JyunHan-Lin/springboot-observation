@@ -34,9 +34,6 @@ public class User {
 	@Column(name = "email")
 	private String email;	
 	
-	@Column(name = "authcode")
-	private Integer authCode;	
-	
 	@Column(name = "completed")
 	private Boolean completed;	
 

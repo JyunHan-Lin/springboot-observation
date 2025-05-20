@@ -17,7 +17,6 @@ public class UserDTO {
 	private Integer userId;
 	private String userName;	
 	private String email;	
-	private Integer authCode;	
 	private Boolean completed;	
 
 }
