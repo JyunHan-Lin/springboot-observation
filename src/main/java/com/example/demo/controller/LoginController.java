@@ -15,7 +15,7 @@ import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping(value = "/bbd")
-public class UserController {
+public class LoginController {
 	
 	@Autowired 
 	private UserLoginService userLoginService;
