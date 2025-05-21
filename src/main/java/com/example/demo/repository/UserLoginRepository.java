@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.model.entity.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer>{
+public interface UserLoginRepository extends JpaRepository<User, Integer>{
 	// T-SQL, 注意:欄位名要符合資料表中的設定
 	@Query(value = "select user_id, username, password_hash, salt, email, active, role from users where username=:username", nativeQuery = true)
 	User getUser(String username); // 也可以用 findByUserName (有 3 種寫法, 寫其中一種就好)

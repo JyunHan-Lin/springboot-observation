@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,10 +13,9 @@ import com.example.demo.model.dto.UserCert;
 import com.example.demo.model.dto.UserDTO;
 import com.example.demo.service.CertService;
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/bbd")
+@RequestMapping(value = {"/bbd"})
 public class LoginController {
 	
 	@Autowired
@@ -40,11 +38,11 @@ public class LoginController {
 			// 將錯誤資料丟給 error.jsp
 			model.addAttribute("message", e.getMessage());
 			e.printStackTrace();
-			return "err";
+			return "error";
 		}
 		
 		// 將憑證放到 session
 		session.setAttribute("userCert", userCert);
-		return "redirect:/room"; // 重導到首頁
+		return "redirect:/bbd/login"; // 重導到首頁
 	}
 }

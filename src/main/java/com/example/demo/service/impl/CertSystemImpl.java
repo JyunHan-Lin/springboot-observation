@@ -7,7 +7,7 @@ import com.example.demo.exception.PasswordInvalidException;
 import com.example.demo.exception.UserNotFoundException;
 import com.example.demo.model.dto.UserCert;
 import com.example.demo.model.entity.User;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.repository.UserLoginRepository;
 import com.example.demo.service.CertService;
 import com.example.demo.util.HashUtil;
 
@@ -15,7 +15,7 @@ import com.example.demo.util.HashUtil;
 public class CertSystemImpl implements CertService{
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UserLoginRepository userRepository;
 
 	@Override
 	//public UserCert getCert(String username, String password) throws CertException {

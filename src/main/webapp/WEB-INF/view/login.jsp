@@ -4,13 +4,13 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>BBD</title>
+		<title>BBD Login</title>
 	</head>
 	<body>
  		<h1>請登入開始體驗</h1>
  		<h2>還沒註冊? 來<a href="user-register.jsp">註冊</a>吧~</h2>
  
- 		<form method="POST" action="/bbd/login">
+ 		<form method="POST" action="/login">
  			<fieldset>
 			 	<label for="username">帳號：</label>
 			 	<input type="text" id="username" name="username" required><br>

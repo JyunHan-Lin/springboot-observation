@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.model.dto.UserDTO;
 import com.example.demo.model.entity.User;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.repository.UserLoginRepository;
 import com.example.demo.service.UserService;
 import com.example.demo.util.HashUtil;
 
@@ -14,7 +14,7 @@ import com.example.demo.util.HashUtil;
 public class UserServiceImpl implements UserService {
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UserLoginRepository userRepository;
 	
 	@Autowired
 	private UserMapper userMapper;
