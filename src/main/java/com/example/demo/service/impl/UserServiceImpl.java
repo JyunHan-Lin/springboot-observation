@@ -27,6 +27,26 @@ public class UserServiceImpl implements UserService {
 		}
 		return userMapper.toDTO(user);
 	}
+	
+	@Override
+	public UserDTO login(String username, String password, String inputCode, String sessionCode) {
+	    if (!inputCode.equalsIgnoreCase(sessionCode)) {
+	        throw new RuntimeException("驗證碼不正確");
+	    }
+
+	    User user = userRepository.getUser(username);
+	    if (user == null) {
+	        throw new RuntimeException("帳號不存在");
+	    }
+
+	    String hash = HashUtil.getHash(password, user.getSalt());
+	    if (!hash.equals(user.getPasswordHash())) {
+	        throw new RuntimeException("密碼錯誤");
+	    }
+
+	    return userMapper.toDTO(user);
+	}
+
 
 	@Override
 	public void addUser(String username, String password, String email, Boolean active, String role) {

@@ -8,9 +8,9 @@
 	</head>
 	<body>
  		<h1>請登入開始體驗</h1>
- 		<h2>還沒註冊? 來<a href="user-register.jsp">註冊</a>吧~</h2>
+ 		<h2>還沒註冊? 來<a href="/bbd/register">註冊</a>吧~</h2>
  
- 		<form method="POST" action="/login">
+ 		<form method="POST" action="/bbd">
  			<fieldset>
 			 	<label for="username">帳號：</label>
 			 	<input type="text" id="username" name="username" required><br>
@@ -18,9 +18,9 @@
 			 	<label for="password">密碼：</label>
 			 	<input type="password" id="password" name="password" required><br>
 			 	
-			 	<label for="authcode">驗證碼：</label>
-			 	<input type="text" id="authcode" name="authcode" required><br>
-				
+			 	<img src="${pageContext.request.contextPath}/user/authcode" alt="驗證碼圖片" />
+				<input type="text" name="authcode" placeholder="請輸入驗證碼" />
+			 	
 				<button type="reset" >重置</button>
 			 	<button type="submit">登入</button>
  			</fieldset>

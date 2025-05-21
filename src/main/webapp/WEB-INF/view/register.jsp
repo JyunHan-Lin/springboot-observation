@@ -4,9 +4,8 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>會員註冊</title>
-	<link rel="stylesheet"
-		href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+	<title>Sign up</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 		<style>
 			.content {
 				display: flex;
@@ -25,7 +24,7 @@
 	<%@ include file="/WEB-INF/view/menu.jsp"%>
 	<!-- content -->
 	<div class="content">
-		<form class="pure-form" method="POST" action="/bbd/user/register">
+		<form class="pure-form" method="POST" action="/bbd/register">
 			<fieldset>
 				<legend>會員註冊</legend>
 				帳號: <input type="text" name="username" placeholder="請輸入帳號" required="required" /><p>

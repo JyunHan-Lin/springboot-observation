@@ -11,20 +11,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.exception.CertException;
 import com.example.demo.model.dto.UserCert;
 import com.example.demo.model.dto.UserDTO;
+import com.example.demo.service.AuthCodeService;
 import com.example.demo.service.CertService;
+import com.example.demo.service.EmailService;
+
 import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
 
 @Controller
-@RequestMapping(value = {"/bbd"})
+@RequestMapping("/bbd")
 public class LoginController {
 	
 	@Autowired
 	private CertService certService;
 	
-	@GetMapping
-	public String loginPage() {
-		return "login";
-	}
+	@Autowired
+	private AuthCodeService authCodeService;
 	
 	@PostMapping
 	public String checkLogin(@RequestParam String username, @RequestParam String password, 
@@ -43,6 +45,25 @@ public class LoginController {
 		
 		// 將憑證放到 session
 		session.setAttribute("userCert", userCert);
-		return "redirect:/bbd/login"; // 重導到首頁
+		return "redirect:/bbd"; // 重導到首頁
 	}
+	
+	// 登入
+	@GetMapping
+	public String login(Model model, HttpSession session) {
+		UserCert userCert = (UserCert) session.getAttribute("userCert");
+		if (userCert == null) {
+			return "login";			
+		}
+		model.addAttribute("username", userCert.getUsername());
+		return "main";
+	}
+	
+	// 登出
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+	    session.invalidate();
+	    return "redirect:/bbd"; 
+	}
+
 }

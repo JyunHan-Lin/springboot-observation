@@ -19,8 +19,7 @@
 					${ message }
 					<%=exception %>
 				</fieldset>	
-			</div>
-			
+			</div>		
 		</div>
 	</body>
 </html>

@@ -14,17 +14,15 @@
 		width: 20px;
 		height: 20px;
 		line-height: 20px; /* 垂直置中 */
-		text-align: center; /* 水平置中 */
+		text-align: right; /* 水平置中 */
 		font-size: 14px;
 		font-weight: bold; /* 文字加粗 */
 	}
 </style>    
 <div style="background: #DDDDDD;padding: 20px">
-	🛒<a href="/bbd/discuss">討論串</a> | 
-	📃<a href="/bbd/behavior">行為紀錄</a> |	 
-	📴<a href="/bbd/user/logout">使用者登出</a> |
-	🎅<a href="/bbd/user/register">使用者註冊</a> |
-	👦<a href="/bbd/user/login">使用者登入</a> |
-	📊<a href="/bbd/setup">網頁設定</a> |
-	
+	<a href="/bbd/discuss">討論串</a> | 
+	<a href="/bbd/behavior">行為紀錄</a> |	 
+	<a href="/bbd/user/edit">會員資料變更</a> |
+	<a href="/bbd/pagesetup">網頁設定</a> |
+	<a href="/bbd/logout">登出</a> |
 </div>
