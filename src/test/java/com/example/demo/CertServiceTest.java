@@ -1,0 +1,25 @@
+package com.example.demo;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.example.demo.exception.CertException;
+import com.example.demo.service.CertService;
+
+@SpringBootTest
+public class CertServiceTest {
+	
+	@Autowired
+	private CertService certService;
+	
+	@Test
+	public void testUserAdd() {
+		try {
+			System.out.println(certService.getCert("jack","3456"));
+		} catch (CertException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+}

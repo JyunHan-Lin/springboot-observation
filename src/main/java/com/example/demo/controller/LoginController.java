@@ -4,12 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.exception.CertException;
+import com.example.demo.model.dto.UserCert;
 import com.example.demo.model.dto.UserDTO;
-import com.example.demo.service.UserLoginService;
-
+import com.example.demo.service.CertService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
@@ -17,24 +20,31 @@ import jakarta.validation.Valid;
 @RequestMapping(value = "/bbd")
 public class LoginController {
 	
-	@Autowired 
-	private UserLoginService userLoginService;
+	@Autowired
+	private CertService certService;
 	
-	
-	@PostMapping("/login")
-	public String login(@Valid UserDTO userDTO, BindingResult bindingResult, Model model, HttpSession session) {
-			
-		if (bindingResult.hasErrors()) {
-		    model.addAttribute("error", "輸入格式錯誤");
-		    return "user-login";
-		}
-        String userName = userDTO.getUserName();
-        String password = userDTO.getPassword();
-        String authCode = userDTO.getAuthCode();
-        String sessionAuthCode = userDTO.getAuthCode();
-        
-		userLoginService.login(userName, password, authCode, sessionAuthCode);
-		return "user-login";
+	@GetMapping
+	public String loginPage() {
+		return "login";
 	}
-
+	
+	@PostMapping
+	public String checkLogin(@RequestParam String username, @RequestParam String password, 
+								Model model, HttpSession session) {
+		// 取得憑證
+		UserCert userCert = null;
+		try {
+			userCert = certService.getCert(username, password);
+		} catch (CertException e) {
+			session.invalidate();
+			// 將錯誤資料丟給 error.jsp
+			model.addAttribute("message", e.getMessage());
+			e.printStackTrace();
+			return "err";
+		}
+		
+		// 將憑證放到 session
+		session.setAttribute("userCert", userCert);
+		return "redirect:/room"; // 重導到首頁
+	}
 }

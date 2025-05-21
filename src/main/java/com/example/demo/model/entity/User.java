@@ -15,26 +15,29 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id")
-	private Integer userId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // 自動生成 id
+	@Column(name = "user_id") // 資料表 user 中的預設欄位名稱
+	private Integer userId;	// 使用者 ID
 	
-	@Column(name = "username")
-	private String userName;	
+	@Column(name = "username", unique = true, nullable = false, length = 50) 
+	private String username; 
 	
-	@Column(name = "hash_password")
-	private String hashPassword;	
+	@Column(name = "password_hash", nullable = false) // 不寫 length 預設為255 
+	private String passwordHash;
 	
-	@Column(name = "hash_salt")
-	private String hashSalt;	
+	@Column(name = "salt", nullable = false) // 不寫 length 預設為255 
+	private String salt;
 	
-	@Column(name = "email")
-	private String email;	
+	@Column(name = "email", nullable = false) 
+	private String email;
 	
-	@Column(name = "completed")
-	private Boolean completed;	
+	@Column(name = "active")
+	private Boolean active;
+	
+	@Column(name = "role")  
+	private String role;
 
 }
