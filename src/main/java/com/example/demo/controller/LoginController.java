@@ -52,11 +52,4 @@ public class LoginController {
 	return "main"; // 重導到首頁
 	}
 
-	// 登出
-	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-	    session.invalidate();
-	    return "redirect:login"; 
-	}
-
 }

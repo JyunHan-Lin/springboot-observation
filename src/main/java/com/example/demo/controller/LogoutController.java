@@ -3,14 +3,17 @@ package com.example.demo.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpSession;
 @Controller
-@RequestMapping("/discuss")
-public class DiscussController {
-	
+@RequestMapping("/logout")
+public class LogoutController {
+
+	// 登出
 	@GetMapping
-	public String discussPage() {
-		return "discuss/discuss";
+	public String logout(HttpSession session) {
+	    session.invalidate();
+	    return "redirect:/login"; 
 	}
+
 }

@@ -6,7 +6,7 @@
 <%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
   
 <div>
-	<a href="/bbd">LOGO</a>
+	<a href="/login">LOGO</a>
 	<a href="/discuss">討論串</a> | 
 	<a href="/behavior">行為分析</a> |	 
 	<a href="/codeedit">會員資料變更</a> |

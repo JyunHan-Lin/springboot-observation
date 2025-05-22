@@ -11,6 +11,6 @@ public class BehaviorController {
 	
 	@GetMapping
 	public String behaviorPage() {
-		return "behavior";
+		return "behavior/behavior";
 	}
 }
