@@ -11,7 +11,8 @@
 		<%@ include file="/WEB-INF/view/menu.jspf" %>
 		
 		<form method="POST" action="/bbd">
-			<h1>討論串</h1>
+			<h1>討論串 / 已加入的討論串</h1>
+			<h2>最新回應的討論串</h2>
 		</form>
 	</body>
 </html>

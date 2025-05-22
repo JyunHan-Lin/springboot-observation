@@ -14,8 +14,8 @@ public class UserJPAReadTest {
 	
 	@Test
 	public void testUserAdd() {
-		System.out.println(userService.getUser("john"));
-		System.out.println(userService.getUser("mary"));
+//		System.out.println(userService.getUser("john"));
+//		System.out.println(userService.getUser("mary"));
 		System.out.println(userService.getUser("jack")); 
 	}
 }

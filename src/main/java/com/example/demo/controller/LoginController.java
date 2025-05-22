@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.websocket.Session;
 
 @Controller
-@RequestMapping("/bbd")
+@RequestMapping("/login")
 public class LoginController {
 	
 	@Autowired
@@ -28,42 +28,35 @@ public class LoginController {
 	@Autowired
 	private AuthCodeService authCodeService;
 	
+	@GetMapping
+	public String loginPage() {
+		return "login";
+	}
+	
 	@PostMapping
 	public String checkLogin(@RequestParam String username, @RequestParam String password, 
-								Model model, HttpSession session) {
-		// 取得憑證
-		UserCert userCert = null;
-		try {
-			userCert = certService.getCert(username, password);
-		} catch (CertException e) {
-			session.invalidate();
-			// 將錯誤資料丟給 error.jsp
-			model.addAttribute("message", e.getMessage());
-			e.printStackTrace();
-			return "error";
-		}
-		
-		// 將憑證放到 session
-		session.setAttribute("userCert", userCert);
-		return "redirect:/bbd"; // 重導到首頁
+			Model model, HttpSession session) {
+	// 取得憑證
+	UserCert userCert = null;
+	try {
+		userCert = certService.getCert(username, password);
+	} catch (CertException e) {
+		session.invalidate();
+		// 將錯誤資料丟給 error.jsp
+		model.addAttribute("message", e.getMessage());
+		e.printStackTrace();
+		return "error";
 	}
-	
-	// 登入
-	@GetMapping
-	public String login(Model model, HttpSession session) {
-		UserCert userCert = (UserCert) session.getAttribute("userCert");
-		if (userCert == null) {
-			return "login";			
-		}
-		model.addAttribute("username", userCert.getUsername());
-		return "main";
+	// 將憑證放到 session
+	session.setAttribute("userCert", userCert);
+	return "main"; // 重導到首頁
 	}
-	
+
 	// 登出
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 	    session.invalidate();
-	    return "redirect:/bbd"; 
+	    return "redirect:login"; 
 	}
 
 }
