@@ -11,7 +11,7 @@
 		<%@ include file="/WEB-INF/view/menu.jspf" %>
 		
 		<h1>變更密碼</h1>
-		<form method="POST" action="/codeedit">
+		<form method="POST" action="/bbd/codeedit">
  			<fieldset>
 			 	<label for="password">輸入舊密碼：</label>
 			 	<input type="password" id="password" name="password" required><br>

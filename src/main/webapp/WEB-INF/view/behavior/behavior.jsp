@@ -12,7 +12,7 @@
 		
 		<h1>行為分析</h1>
 		<h2>選擇要查看的討論串</h2>
-		<form method="POST" action="/behavior">
+		<form method="POST" action="/bbd/behavior">
  			<fieldset>
 				<h3>標題1</h3><h4>內文描述1</h4><button>閱覽</button>
 				<h3>標題2</h3><h4>內文描述2</h4><button>閱覽</button>

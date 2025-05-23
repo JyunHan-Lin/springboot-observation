@@ -49,7 +49,7 @@ public class LoginController {
 	}
 	// 將憑證放到 session
 	session.setAttribute("userCert", userCert);
-	return "main"; // 重導到首頁
+	return "redirect:/bbd"; // 重導到首頁
 	}
 
 }

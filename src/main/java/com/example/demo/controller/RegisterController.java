@@ -8,22 +8,50 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.exception.CertException;
-import com.example.demo.model.dto.UserCert;
-import com.example.demo.model.dto.UserDTO;
-import com.example.demo.service.AuthCodeService;
-import com.example.demo.service.CertService;
 import com.example.demo.service.EmailService;
-
-import jakarta.servlet.http.HttpSession;
-import jakarta.websocket.Session;
+import com.example.demo.service.UserRegisterService;
+import com.example.demo.util.HashUtil;
 
 @Controller
 @RequestMapping("/register")
 public class RegisterController {
 
+	@Autowired
+	private UserRegisterService userRegisterService;
+	
+	@Autowired
+	private EmailService emailService;
+	
 	@GetMapping
 	public String registerPage() {
 		return "register";
 	}
+	
+	@PostMapping
+	public String addUser(@RequestParam String username,
+	                      @RequestParam String password,
+	                      @RequestParam String email,
+	                      Model model) {
+
+	    // 加鹽雜湊處理
+	    String salt = HashUtil.getSalt();
+	    String passwordHash = HashUtil.getHash(password, salt);
+
+	    // 呼叫 service 儲存用戶資料
+	    userRegisterService.addUser(username, passwordHash, email);
+
+	    // 寄送 email 驗證信
+	    String emailConfirmLink = "http://localhost:8085/bbd/email/confirm?username=" + username;
+	    emailService.sendEmail(email, emailConfirmLink);
+
+	    // 顯示結果
+	    String resultTitle = "註冊結果";
+	    String resultMessage = "用戶 " + username + " 註冊成功!<p />系統已送出驗證信件到 " + email + " 信箱, 請收信並點選[確認]連結";
+
+	    model.addAttribute("resultTitle", resultTitle);
+	    model.addAttribute("resultMessage", resultMessage);
+
+	    return "result";
+	}
 }
+

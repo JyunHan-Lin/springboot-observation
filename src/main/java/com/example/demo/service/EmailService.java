@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Properties;
 
 import jakarta.mail.PasswordAuthentication;
@@ -14,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.config.EmailConfig;
+import com.example.demo.repository.UserRegisterRepository;
 
 @Service
 public class EmailService {
@@ -47,25 +50,18 @@ public class EmailService {
 		try {
 			// 建立一個預設的 MimeMessage 物件
 			Message message = new MimeMessage(session);
-
 			// 設定寄件者
 			message.setFrom(new InternetAddress(from));
-
 			// 設定收件者
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-
 			// 設定郵件標題
 			message.setSubject("會員註冊確認信");
-
 			// 設定郵件內容讓使用者點選連結（confirmUrl）進行確認
 			message.setText("請點選以下連結進行確認：\n" + confirmUrl);
-
 			// 傳送郵件
 			Transport.send(message);
-
 			// 發送成功 Log
 			System.out.println("發送成功: " + to);
-
 		} catch (MessagingException e) {
 			// 發送失敗 Log
 			System.out.println("發送失敗: " + e.getMessage());

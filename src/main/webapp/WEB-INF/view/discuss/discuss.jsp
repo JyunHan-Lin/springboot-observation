@@ -12,7 +12,7 @@
 		
 		<h1>討論串</h1> <button>建立討論串</button>
 		<h2>選擇要查看的討論串</h2>
-		<form method="POST" action="/discuss">
+		<form method="POST" action="/bbd/discuss">
  			<fieldset>
 				<h3>標題1</h3><h4>內文描述1</h4><button>閱覽</button>
 				<h3>標題2</h3><h4>內文描述2</h4><button>閱覽</button>
