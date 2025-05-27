@@ -4,25 +4,27 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Sign up</title>
+		<link rel="stylesheet" href="/css/basic.css">
+		<link rel="stylesheet" href="/css/layout.css">
+		<title>Bird Behavior Document</title>
 	</head>
-	<body>
-		<!-- content -->
-		<div>
-			<form method="POST" action="/register">
+	<body class="fontstyle view3" >
+			<form class="register" method="POST" action="/register">
 				<fieldset>
-					<legend>會員註冊</legend>
-					帳號: <input type="text" name="username" placeholder="請輸入帳號" required="required" /><p>
-					密碼: <input type="password" name="password" placeholder="請輸入密碼" required="required" /><p>
-					電郵: <input type="email" name="email" placeholder="請輸入電子郵件" required="required" /><p>
+					<legend class="h1">會員註冊</legend>
+					<input type="text" name="username" placeholder="請輸入帳號" required/><p>
+					<input type="password" name="password" placeholder="請輸入密碼" required/><p>
+					<input type="email" name="email" placeholder="請輸入電子郵件" required/><p>
+					
 					<button type="submit">寄送驗證碼</button>
-					輸入收到的驗證碼: <input type="text" name="passcode" placeholder="請輸入驗證碼" required="required" /><p>
+					<input type="text" name="passcode" placeholder="請輸入驗證碼" required/><p>
+					
 					人員資格?? 管理員/使用者?<p>
-					<button type="reset">清空</button>
+					
+					<button type="reset">重置</button>
 					<button type="submit">傳送</button>
 
 				</fieldset>
 			</form>
-		</div>
 	</body>
 </html>

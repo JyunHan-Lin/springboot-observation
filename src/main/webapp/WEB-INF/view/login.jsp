@@ -4,23 +4,20 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>BBD Login</title>
+		<link rel="stylesheet" href="/css/basic.css">
+		<link rel="stylesheet" href="/css/layout.css">
+		<title>Bird Behavior Document</title>
 	</head>
-	<body>
-		<h1>Bird Behavior Document</h1>
- 		<h1>請登入開始體驗</h1>
- 		<h2>還沒註冊? 來<a href="/register">註冊</a>吧~</h2>
- 		<h3>驗證碼有空再加上去</h3>
- 		<form method="POST" action="/login">
+	<body class="fontstyle view2">
+		<h1 class="h1">Bird Behavior Document</h1>
+ 		<form class="login" method="POST" action="/login">
  			<fieldset>
-			 	<label for="username">帳號：</label>
-			 	<input type="text" id="username" name="username" required><br>
-			 	
-			 	<label for="password">密碼：</label>
-			 	<input type="password" id="password" name="password" required><br>
-			 	
-			 	<label for="authcode">驗證碼：</label>
-			 	<input type="text" id="authcode" name="authcode" required><br>
+		 		<legend class="h2">登入或<a href="/register">創建帳號</a></legend>
+			 	<input type="text" name="username" placeholder="請輸入帳號" required/><p/>
+			 	<input type="password" name="password" placeholder="請輸入密碼" required/><p/>
+			 
+			 	<label for="authcode"></label>
+			 	<input type="text" name="authcode" placeholder="請輸入驗證碼" required/><p/>
 			 	
 				<button type="reset" >重置</button>
 			 	<button type="submit">登入</button>

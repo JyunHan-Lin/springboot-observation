@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Bird Behavior Document</title>
+		<title>Error</title>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 	</head>
 	<body>
@@ -15,7 +15,7 @@
 		<div style="padding: 15px">
 			<div class="pure-form">
 				<fieldset>
-					<legend>網站出現異常狀況，請稍待片刻</legend>
+					<legend>發生錯誤</legend>
 					${ message }
 					<%=exception %>
 				</fieldset>	

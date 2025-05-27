@@ -4,9 +4,9 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
-  
-<div>
-	<a href="/bbd">LOGO</a>
+<link rel="stylesheet" href="/css/basic.css">
+<div class="fontstyle menu">
+	<a href="/bbd">BBD</a>
 	<a href="/bbd/discuss">討論串</a> | 
 	<a href="/bbd/behavior">行為分析</a> |	 
 	<a href="/bbd/codeedit">會員資料變更</a> |

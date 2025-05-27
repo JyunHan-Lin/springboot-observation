@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wdth@62.5..100&display=swap');
+
+.fontstyle{
+  	font-family: "Noto Sans", sans-serif;
+  	font-optical-sizing: auto;
+  	font-style: normal;
+  	font-variation-settings:"wdth" 100;
+}
+
+.view{
+	background:black;
+	background-image:url('/images/image1.jpg');
+	height: 200px;
+  	line-height: 100px;  /* 行高設成跟高度一樣 */
+  	text-align: center;  /* 水平置中 */
+}
+
+.view2{
+	background:black;
+	background-image:url('/images/image2.jpg');
+	text-align: center;
+	height: 200px;
+}
+
+.view3{
+	background:black;
+	background-image:url('/images/image3.jpg');
+}
+
+
+.h1{
+	color:white;
+}
+
+.h2{
+	color:white;
+}
+
+
+.login {
+	color: white;
+	width: 300px;               /* 控制表單寬度 */
+  	margin: 50px auto;          /* 垂直 50px、水平置中 */
+  	padding: 20px;              /* 內距 */
+  	border: 1px solid #ccc;     /* 淺灰邊框 */
+  	border-radius: 8px;         /* 圓角 */
+}
+
+
+form.login input,
+form.login button {
+	display: block;
+  	width: 100%;
+  	margin-bottom: 10px;
+  	padding: 8px;
+  	font-size: 14px;
+  	box-sizing: border-box;
+}
+
+.register{
+	background:black;
+	color: white;
+	width: 300px;               /* 控制表單寬度 */
+  	margin: 50px auto;          /* 垂直 50px、水平置中 */
+  	padding: 20px;              /* 內距 */
+  	border: 1px solid #ccc;     /* 淺灰邊框 */
+  	border-radius: 8px;         /* 圓角 */
+}
+
+form.register input,
+form.register button {
+	display: block;
+  	width: 100%;
+  	margin-bottom: 10px;
+  	padding: 8px;
+  	font-size: 14px;
+  	box-sizing: border-box;
+}
+
+.menu{
+	background:black;
+	
+}
+
+a {
+  color: white;
+  text-decoration: none; /* 取消底線 */
+}
+
+a:hover {
+  color: gray;
+  text-decoration: underline; /* 滑過時加底線 */
+}

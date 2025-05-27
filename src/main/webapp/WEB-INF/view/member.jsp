@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Code change</title>
+		<title>Bird Behavior Document</title>
 	</head>
 	<body>
 		<!-- menu bar include -->
