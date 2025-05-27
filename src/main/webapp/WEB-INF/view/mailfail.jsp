@@ -7,7 +7,7 @@
 		<title>Fail</title>
 	</head>
 	<body>
-		<h2>${message}</h2>
-		<a href="/login">回登入頁</a>
+		<h2>認證失敗...請重新註冊</h2>
+		<a href="/register">回註冊頁</a>
 	</body>
 </html>

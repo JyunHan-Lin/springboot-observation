@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.service.EmailService;
-import com.example.demo.service.UserRegisterService;
+import com.example.demo.service.UserService;
 import com.example.demo.util.HashUtil;
 
 @Controller
@@ -17,7 +17,7 @@ import com.example.demo.util.HashUtil;
 public class RegisterController {
 
 	@Autowired
-	private UserRegisterService userRegisterService;
+	private UserService userService;
 	
 	@Autowired
 	private EmailService emailService;
@@ -38,10 +38,10 @@ public class RegisterController {
 	    String passwordHash = HashUtil.getHash(password, salt);
 
 	    // 呼叫 service 儲存用戶資料
-	    userRegisterService.addUser(username, passwordHash, email);
+	    userService.addUser(username, passwordHash, email);
 
 	    // 寄送 email 驗證信
-	    String emailConfirmLink = "http://localhost:8085/bbd/email/confirm?username=" + username;
+	    String emailConfirmLink = "http://localhost:8085/email/confirm?username=" + username;
 	    emailService.sendEmail(email, emailConfirmLink);
 
 	    // 顯示結果

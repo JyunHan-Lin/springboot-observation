@@ -7,7 +7,7 @@
 		<title>Success</title>
 	</head>
 	<body>
-		<h2>${message}</h2>
+		<h2>認證成功!</h2>
 		<a href="/login">點我登入</a>
 	</body>
 </html>

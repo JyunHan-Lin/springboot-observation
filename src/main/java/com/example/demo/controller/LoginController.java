@@ -34,8 +34,9 @@ public class LoginController {
 	}
 	
 	@PostMapping
-	public String checkLogin(@RequestParam String username, @RequestParam String password, 
-			Model model, HttpSession session) {
+	public String checkLogin(@RequestParam String username, 
+			                 @RequestParam String password, 
+			                 Model model, HttpSession session) {
 	// 取得憑證
 	UserCert userCert = null;
 	try {

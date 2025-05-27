@@ -7,7 +7,7 @@ import com.example.demo.exception.PasswordInvalidException;
 import com.example.demo.exception.UserNotFoundException;
 import com.example.demo.model.dto.UserCert;
 import com.example.demo.model.entity.User;
-import com.example.demo.repository.UserLoginRepository;
+import com.example.demo.repository.UserRepository;
 import com.example.demo.service.CertService;
 import com.example.demo.util.HashUtil;
 
@@ -15,25 +15,24 @@ import com.example.demo.util.HashUtil;
 public class CertSystemImpl implements CertService{
 	
 	@Autowired
-	private UserLoginRepository userRepository;
+	private UserRepository userRepository;
 
 	@Override
 	//public UserCert getCert(String username, String password) throws CertException {
 	public UserCert getCert(String username, String password) throws UserNotFoundException, PasswordInvalidException {
-		// 1.是否有此人
+		// 1. 是否有此人
 		User user = userRepository.getUser(username);
-		if (user==null) {
+		if(user == null) {
 			throw new UserNotFoundException("查無此人");
 		}
-		// 2.密碼 hash 比對
+		// 2. 密碼 hash 比對
 		String passwordHash = HashUtil.getHash(password, user.getSalt());
-//		System.out.println("輸入的 passwordHash: " + passwordHash);
-//		System.out.println("資料庫的 passwordHash: " + user.getPasswordHash());
-		if (!passwordHash.equals(user.getPasswordHash())) {
+		if(!passwordHash.equals(user.getPasswordHash())) {
 			throw new PasswordInvalidException("密碼錯誤");
 		}
-		// 3.簽發憑證
+		// 3. 簽發憑證
 		UserCert userCert = new UserCert(user.getUserId(), user.getUsername(), user.getRole());
 		return userCert;
 	}
 }
+

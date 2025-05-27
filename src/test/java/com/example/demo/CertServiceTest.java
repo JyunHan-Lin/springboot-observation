@@ -16,7 +16,7 @@ public class CertServiceTest {
 	@Test
 	public void testUserAdd() {
 		try {
-			System.out.println(certService.getCert("jack","3456"));
+			System.out.println(certService.getCert("john","1234"));
 		} catch (CertException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();

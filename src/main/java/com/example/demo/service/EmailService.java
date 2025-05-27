@@ -1,7 +1,5 @@
 package com.example.demo.service;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.Properties;
 
 import jakarta.mail.PasswordAuthentication;
@@ -16,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.config.EmailConfig;
-import com.example.demo.repository.UserRegisterRepository;
 
 @Service
 public class EmailService {
