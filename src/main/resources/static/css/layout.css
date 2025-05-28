@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wdth@62.5..100&display=swap');
 
+.container {
+	width: 1000px;
+	margin: auto; 
+    background: black;
+    padding-top: 50px;  
+}
 .fontstyle{
   	font-family: "Noto Sans", sans-serif;
   	font-optical-sizing: auto;
@@ -34,6 +40,13 @@
 
 .h2{
 	color:white;
+	font-size:20px;
+}
+
+.index{
+	background:black;
+	width:400px;
+	margin:50px auto;
 }
 
 .user{
@@ -56,9 +69,65 @@ form.user button {
   	box-sizing: border-box;
 }
 
-.menu{
-	background:black;
-	
+.button-group {
+  display: flex;
+  align-items: center;      /* 垂直置中 */
+  gap: 10px;                /* 元素之間的間距 */
+  margin-bottom: 10px;      /* 與其他欄位分開 */
+}
+
+.button-group input {
+  flex: 1;                  /* 輸入框填滿可用空間 */
+}
+
+.button-group img {
+  height: 40px;             /* 控制驗證碼圖片大小，可依需求調整 */
+  cursor: pointer;          /* 滑鼠變小手（用來刷新驗證碼） */
+}
+
+.button-group button {
+  flex: 1;                  /* 輸入框填滿可用空間 */
+}
+
+.navbar {
+  background-color:#09702a;
+  padding: 10px 0;
+}
+
+.nav-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width:1000px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+.logo{
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.nav-list {
+  list-style: none;           /* 移除圓點 */
+  display: flex;              /* 使用 Flex 排列 */
+  gap: 20px;                  /* 選單間距 */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 12px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-list li a:hover {
+  background-color: white;
+  color: black;
 }
 
 a {

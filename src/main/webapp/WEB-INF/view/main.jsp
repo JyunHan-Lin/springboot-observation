@@ -3,16 +3,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<title>Bird Behavior Document</title>
+		<meta charset="UTF-8">		
+		<link rel="stylesheet" href="/css/basic.css">
+		<link rel="stylesheet" href="/css/layout.css">
+		<title>Bird Behavior Document🐣</title>
 	</head>
-	<body>
+	<body class="container fontstyle">
 		<!-- menu bar include -->
 		<%@ include file="/WEB-INF/view/menu.jspf" %>
-		
-		<form method="POST" action="/bbd">
-			<h1>討論串 / 已加入的討論串</h1>
-			<h2>最新回應的討論串</h2>
+		<h1 class="h1">討論串 / 已加入的討論串</h1>
+				
+		<form class="user" method="POST" action="/bbd">
+			
 		</form>
 	</body>
 </html>

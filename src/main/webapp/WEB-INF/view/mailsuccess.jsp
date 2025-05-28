@@ -4,10 +4,17 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Success</title>
+		<title>註冊成功🐣</title>
+		<link rel="stylesheet" href="/css/basic.css">
+		<link rel="stylesheet" href="/css/layout.css">
 	</head>
-	<body>
-		<h2>認證成功!</h2>
-		<a href="/login">點我登入</a>
+	<body class="view1 fontstyle">
+		<fieldset class="user">
+		<!-- content -->
+		<div style="padding: 15px">
+			<h2 class="h2">註冊成功!</h2>	
+			<a href="/login">點我登入</a>
+		</div>
+		</fieldset>
 	</body>
 </html>

@@ -4,15 +4,17 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Bird Behavior Document</title>
+		<link rel="stylesheet" href="/css/basic.css">
+		<link rel="stylesheet" href="/css/layout.css">
+		<title>Bird Behavior Document🐣</title>
 	</head>
-	<body>
+	<body class="container fontstyle">
 		<!-- menu bar include -->
 		<%@ include file="/WEB-INF/view/menu.jspf" %>
 		
-		<h1>變更密碼</h1>
+		<h1 class="h1">變更密碼</h1>
 		<form method="POST" action="/bbd/codeedit">
- 			<fieldset>
+ 			<fieldset class="user">
 			 	<label for="password">輸入舊密碼：</label>
 			 	<input type="password" id="password" name="password" required><br>
 			 	

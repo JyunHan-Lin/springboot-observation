@@ -15,7 +15,7 @@
 		<div>
 			<form method="POST" action="/bbd/pageeedit">
 				<fieldset>
-					<legend>畫面個人化設定</legend>
+					<legend>畫面個人化設定(直接綁在導覽列上?)</legend>
 					顏色: <input type="checkbox" name="color"/>
 					<button type="submit" class="pure-button pure-button-primary">變更</button>
 				</fieldset>

@@ -4,13 +4,16 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>${resultTitle}</title>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+		<title>${resultTitle}🐣</title>
+		<link rel="stylesheet" href="/css/basic.css">
+		<link rel="stylesheet" href="/css/layout.css">	
 	</head>
-	<body>
+	<body class="view1 fontstyle">
+		<fieldset class="user">
 		<!-- content -->
 		<div style="padding: 15px">
-			<h1>${resultMessage}</h1>
+			<h2 class="h2">${resultMessage}</h2>
 		</div>
+		</fieldset>
 	</body>
 </html>
