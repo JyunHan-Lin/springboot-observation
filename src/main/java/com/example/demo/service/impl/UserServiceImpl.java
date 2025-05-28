@@ -20,53 +20,24 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserMapper userMapper;
-	
+
+	// 註冊
+	// 參數待改 ?
 	@Override
-	public UserDTO getUser(String username, String password, String inputCode, String sessionCode) {
-	    if (!inputCode.equalsIgnoreCase(sessionCode)) {
-	        throw new RuntimeException("驗證碼不正確");
-	    }
-
-	    User user = userRepository.getUser(username);
-	    if (user == null) {
-	        throw new RuntimeException("帳號不存在");
-	    }
-
-	    String hash = HashUtil.getHash(password, user.getSalt());
-	    if (!hash.equals(user.getPasswordHash())) {
-	        throw new RuntimeException("密碼錯誤");
-	    }
-	    
-	    if (!user.getActive()) {
-	        throw new RuntimeException("帳號尚未啟用，請先完成 Email 驗證");
-	    }
-	    
-	    return userMapper.toDTO(user);
-	}
-
-
-	@Override
-	public void addUser(String username, String password, String email) {
+	public void addUser(String username, String password, String email, Boolean active, String role) {
 	    // 判斷使用者是否已存在
 	    if (userRepository.existsByUsername(username)) {
 	    	throw new RuntimeException("使用者已經註冊過了");
 	    }
 		String salt = HashUtil.getSalt();
 		String passwordHash = HashUtil.getHash(password, salt);
-		
-		User user = new User();
-			 user.setUsername(username);
-			 user.setPasswordHash(passwordHash);
-			 user.setSalt(salt);
-			 user.setEmail(email);
-			 user.setActive(false); 
-			 user.setRole("user"); 
-		
+		User user = new User(null, username, passwordHash, salt, email, active, role);
 		userRepository.save(user);
 		System.out.println("使用者註冊成功");
 		
 	}
 	
+	// email
 	public boolean confirmEmail(String username) {
 	    Optional<User> optUser = userRepository.findByUsername(username);
 	    if (optUser.isPresent()) {

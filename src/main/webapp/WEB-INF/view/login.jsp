@@ -10,14 +10,15 @@
 	</head>
 	<body class="fontstyle view2">
 		<h1 class="h1">Bird Behavior Document</h1>
- 		<form class="login" method="POST" action="/login">
+ 		<form class="user" method="POST" action="/login">
  			<fieldset>
 		 		<legend class="h2">登入或<a href="/register">創建帳號</a></legend>
 			 	<input type="text" name="username" placeholder="請輸入帳號" required/><p/>
 			 	<input type="password" name="password" placeholder="請輸入密碼" required/><p/>
 			 
 			 	<label for="authcode"></label>
-			 	<input type="text" name="authcode" placeholder="請輸入驗證碼" required/><p/>
+			 	<input type="text" name="authcode" placeholder="請輸入驗證碼" required>
+			 	<img src="/user/authcode" title="驗證碼" alt="驗證碼" />
 			 	
 				<button type="reset" >重置</button>
 			 	<button type="submit">登入</button>

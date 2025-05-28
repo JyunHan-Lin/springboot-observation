@@ -15,7 +15,6 @@
 		<div style="padding: 15px">
 			<div class="pure-form">
 				<fieldset>
-					<legend>網站出現異常狀況，請稍待片刻</legend>
 					${ message }
 					<%=exception %>
 				</fieldset>	

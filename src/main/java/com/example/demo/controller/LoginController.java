@@ -10,13 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.exception.CertException;
 import com.example.demo.model.dto.UserCert;
-import com.example.demo.model.dto.UserDTO;
-import com.example.demo.service.AuthCodeService;
 import com.example.demo.service.CertService;
-import com.example.demo.service.EmailService;
 
 import jakarta.servlet.http.HttpSession;
-import jakarta.websocket.Session;
 
 @Controller
 @RequestMapping("/login")
@@ -24,9 +20,6 @@ public class LoginController {
 	
 	@Autowired
 	private CertService certService;
-	
-	@Autowired
-	private AuthCodeService authCodeService;
 	
 	@GetMapping
 	public String loginPage() {
@@ -36,11 +29,15 @@ public class LoginController {
 	@PostMapping
 	public String checkLogin(@RequestParam String username, 
 			                 @RequestParam String password, 
+			                 @RequestParam String authcode,
 			                 Model model, HttpSession session) {
+	// 比對驗證	
+    String sessionAuthCode = (String) session.getAttribute("authcode") + "";
+	
 	// 取得憑證
 	UserCert userCert = null;
 	try {
-		userCert = certService.getCert(username, password);
+		userCert = certService.getCert(username, password, authcode, sessionAuthCode);
 	} catch (CertException e) {
 		session.invalidate();
 		// 將錯誤資料丟給 error.jsp
@@ -51,6 +48,8 @@ public class LoginController {
 	// 將憑證放到 session
 	session.setAttribute("userCert", userCert);
 	return "redirect:/bbd"; // 重導到首頁
+
 	}
+
 
 }

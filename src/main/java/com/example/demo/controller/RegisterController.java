@@ -33,12 +33,8 @@ public class RegisterController {
 	                      @RequestParam String email,
 	                      Model model) {
 
-	    // 加鹽雜湊處理
-	    String salt = HashUtil.getSalt();
-	    String passwordHash = HashUtil.getHash(password, salt);
-
-	    // 呼叫 service 儲存用戶資料
-	    userService.addUser(username, passwordHash, email);
+		// 呼叫 service 儲存用戶資料
+	    userService.addUser(username, password, email, false, "user");
 
 	    // 寄送 email 驗證信
 	    String emailConfirmLink = "http://localhost:8085/email/confirm?username=" + username;

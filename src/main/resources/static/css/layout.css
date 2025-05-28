@@ -36,28 +36,7 @@
 	color:white;
 }
 
-
-.login {
-	color: white;
-	width: 300px;               /* 控制表單寬度 */
-  	margin: 50px auto;          /* 垂直 50px、水平置中 */
-  	padding: 20px;              /* 內距 */
-  	border: 1px solid #ccc;     /* 淺灰邊框 */
-  	border-radius: 8px;         /* 圓角 */
-}
-
-
-form.login input,
-form.login button {
-	display: block;
-  	width: 100%;
-  	margin-bottom: 10px;
-  	padding: 8px;
-  	font-size: 14px;
-  	box-sizing: border-box;
-}
-
-.register{
+.user{
 	background:black;
 	color: white;
 	width: 300px;               /* 控制表單寬度 */
@@ -67,8 +46,8 @@ form.login button {
   	border-radius: 8px;         /* 圓角 */
 }
 
-form.register input,
-form.register button {
+form.user input,
+form.user button {
 	display: block;
   	width: 100%;
   	margin-bottom: 10px;

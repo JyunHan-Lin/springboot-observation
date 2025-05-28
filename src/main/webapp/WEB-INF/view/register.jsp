@@ -9,18 +9,16 @@
 		<title>Bird Behavior Document</title>
 	</head>
 	<body class="fontstyle view3" >
-			<form class="register" method="POST" action="/register">
+			<form class="user" method="POST" action="/register">
 				<fieldset>
 					<legend class="h1">會員註冊</legend>
 					<input type="text" name="username" placeholder="請輸入帳號" required/><p>
 					<input type="password" name="password" placeholder="請輸入密碼" required/><p>
 					<input type="email" name="email" placeholder="請輸入電子郵件" required/><p>
-					
+					<%--
 					<button type="submit">寄送驗證碼</button>
-					<input type="text" name="passcode" placeholder="請輸入驗證碼" required/><p>
-					
-					人員資格?? 管理員/使用者?<p>
-					
+					<input type="text" name="passcode" placeholder="請輸入驗證碼" required/><p>										
+					--%>
 					<button type="reset">重置</button>
 					<button type="submit">傳送</button>
 
