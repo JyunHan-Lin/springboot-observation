@@ -51,7 +51,7 @@ public class DiscussController {
 	    return "redirect:/bbd/discuss/" + id;
 	}
 	
-	// 編輯(標題、描述、) 
+	// 編輯(標題、描述、網址: 點選到裡面再編輯) 
 
-	// 刪除
+	// 刪除(編輯模式中才能刪除) 
 }

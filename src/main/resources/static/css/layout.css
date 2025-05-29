@@ -38,6 +38,10 @@
 	font-size:20px;
 }
 
+.title{
+	font-size:20px;
+}
+
 .index{
 	background:black;
 	width:400px;
@@ -124,6 +128,87 @@ form.user button {
   background-color: white;
   color: black;
 }
+
+.discussion-form {
+  width: 400px;
+  margin: 50px auto; /* 水平置中，並往下推一點 */
+  padding: 20px;
+  border: 2px solid #ccc;
+  position: relative;
+  background-color: #f9f9f9;
+}
+
+.discussion-form input, 
+.discussion-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.discussion-form textarea {
+  height: 100px; /* 讓描述輸入框大一點 */
+  resize: vertical;
+}
+
+.discussion-form button {
+  padding: 10px 20px;   /* 上下10px、左右20px */
+  font-size: 16px;      /* 字體大小 */
+  border-radius: 5px;   /* 圓角 */
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align:right;
+}
+
+.discussion-form button:hover {
+  background-color: #45a049;
+}
+
+.button-wrapper{
+  text-align:right;
+}
+
+.video-list-container {
+  width: 1000px;
+  margin: 30px auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.video-card {
+  width: 30%;
+  background-color: #fdfdfd;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.video-card img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.video-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.video-description {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+
+
 
 a {
   color: white;
