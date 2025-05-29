@@ -18,7 +18,7 @@
 			 
 			 	<label for="authcode"></label>
 				<div class="button-group">
-  					<input type="text" name="authCode" placeholder="請輸入驗證碼" required>
+  					<input type="text" name="authcode" placeholder="請輸入驗證碼" required>
   					<img src="/user/authcode" title="驗證碼" alt="驗證碼" />
 				</div>
 				<div class="button-group">

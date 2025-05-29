@@ -1,11 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wdth@62.5..100&display=swap');
 
-.container {
-	width: 1000px;
-	margin: auto; 
-    background: black;
-    padding-top: 50px;  
-}
+
 .fontstyle{
   	font-family: "Noto Sans", sans-serif;
   	font-optical-sizing: auto;

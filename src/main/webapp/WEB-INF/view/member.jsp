@@ -12,17 +12,17 @@
 		<!-- menu bar include -->
 		<%@ include file="/WEB-INF/view/menu.jspf" %>
 		
-		<h1 class="h1">變更密碼</h1>
 		<form method="POST" action="/bbd/codeedit">
- 			<fieldset class="user">
+ 			<fieldset class="">
+ 				<legend>變更密碼</legend>
 			 	<label for="password">輸入舊密碼：</label>
-			 	<input type="password" id="password" name="password" required><br>
+			 	<input type="password" id="oldpassword" name="password" required><br>
 			 	
 			 	<label for="password">輸入新密碼：</label>
-			 	<input type="password" id="password" name="password" required><br>
+			 	<input type="password" id="newpassword1" name="password" required><br>
 			 	
 			 	<label for="password">再輸入一次新密碼：</label>
-			 	<input type="password" id="password" name="password" required><br>
+			 	<input type="password" id="newpassword2" name="password" required><br>
 			 	
 				<button type="reset" >重置</button>
 			 	<button type="submit">確認送出</button>

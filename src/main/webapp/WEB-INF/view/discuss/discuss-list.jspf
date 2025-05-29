@@ -1,12 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<!-- Jakarta JSTL 表單標籤 -->
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<link rel="stylesheet" href="/css/basic.css">
+<link rel="stylesheet" href="/css/layout.css">
+<div class="fontstyle">
+	<fieldset>
+		<legend>已建立的討論串列表</legend>
+		<table class="">
+			<thead>
+				<tr><th>編號</th><th>標題</th><th>描述</th><th>編輯</th><th>刪除</th></tr>
+			</thead>
+			<tbody>
+				<c:forEach var="discuss" items="${ discuss }">
+					<tr>
+						<td>${ discuss.discussId }</td>
+						<td>
+						    <a href="${pageContext.request.contextPath}/bbd/discuss/${discuss.discussId}">
+	       					 ${discuss.title}
+	     					</a>
+						</td>
+						
+						<td>${ discuss.description }</td>
+						<td><a class=" " href="/bbd/discuss/${ discuss.discussId }">編輯</a></td>
+						<td>
+							<form method="post" action="/bbd/discuss/delete/${ discuss.discussId }">
+								<input type="hidden" name="_method" value="DELETE" />
+								<button type="submit" class="" >刪除</button>
+							</form>						
+						</td>
+					</tr>	
+				</c:forEach>
+			</tbody>
+		</table>
+	</fieldset>
+</div>

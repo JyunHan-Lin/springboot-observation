@@ -10,10 +10,8 @@
 	<div class="nav-container">
 		<div class="logo"><a href="/bbd">BBD</a></div>
 		<ul class="nav-list">
-			<li><a href="/bbd/discuss">討論串</a></li> 
-			<li><a href="/bbd/behavior">行為分析</a></li>	 
+			<li><a href="/bbd/discuss/new">建立討論串</a></li> 
 			<li><a href="/bbd/codeedit">會員資料變更</a></li>
-			<li><a href="/bbd/pageeedit">網頁設定</a></li>
 			<li><a href="/bbd/logout">登出</a></li>
 		</ul>
 	</div>
