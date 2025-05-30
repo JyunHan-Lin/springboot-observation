@@ -8,15 +8,15 @@
 
 <legend>已建立的討論串列表</legend>
 	<fieldset>
-		<c:forEach var="discuss" items="${discussList}">
+		<c:forEach var="discussDTO" items="${discussList}">
 		  <div class="video-card">
-		    <img src="https://img.youtube.com/vi/${discuss.youtubeVideoId}/mqdefault.jpg" alt="YouTube封面" />
+		    <img src="https://img.youtube.com/vi/${discussDTO.youtubeVideoId}/mqdefault.jpg" alt="YouTube封面" />
 		    <div class="video-title">
-		      <a href="${pageContext.request.contextPath}/bbd/discuss/${discuss.discussId}">
-		         ${discuss.title}
+		      <a href="${pageContext.request.contextPath}/bbd/discuss/${discussDTO.discussId}">
+		         ${discussDTO.title}
 		      </a>
 		    </div>
-		    <div class="video-description">${ discuss.description }</div>
+		    <div class="video-description">${ discussDTO.description }</div>
 		  </div>
 		</c:forEach>
 	</fieldset>

@@ -4,7 +4,7 @@
 <%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form" %>
 <link rel="stylesheet" href="/css/basic.css">
 <link rel="stylesheet" href="/css/layout.css">
-<sp:form class="fontstyle" method="post" modelAttribute="discuss" action="/bbd/discuss/new" >
+<sp:form class="fontstyle" method="post" modelAttribute="discussDTO" action="/bbd/discuss/new" >
   <fieldset class="discussion-form">
     <legend class="title">建立討論串</legend>
     	標題: <sp:input type="text" path="title" placeholder="請輸入標題"/><p />

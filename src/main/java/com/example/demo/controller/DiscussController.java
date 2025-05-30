@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.model.dto.DiscussDTO;
 import com.example.demo.model.entity.Discuss;
 import com.example.demo.service.DiscussService;
 
@@ -23,21 +24,21 @@ public class DiscussController {
 	
 	@GetMapping("/new")
 	public String createDiscuss(Model model) {
-		model.addAttribute("discuss", new Discuss());
+		model.addAttribute("discussDTO", new DiscussDTO());
 		return "discuss/discuss-new";
 	}
 	
 	@PostMapping("/new")
-	public String saveDiscuss(@ModelAttribute Discuss discuss) {
-		Discuss savedDiscuss = discussService.createDiscuss(discuss);
+	public String saveDiscuss(@ModelAttribute DiscussDTO discussDTO) {
+		DiscussDTO savedDiscuss = discussService.createDiscuss(discussDTO);
 	    return "redirect:/bbd/discuss/" + savedDiscuss.getDiscussId();
 	}
 	
 	@GetMapping("/{id}")
 	public String viewReport(@PathVariable Integer id, Model model) {
-	    Discuss discuss = discussService.getDiscussById(id)
-	                        .orElseThrow(() -> new RuntimeException("Discuss not found"));
-	    model.addAttribute("discuss", discuss);
+	    DiscussDTO discussDTO = discussService.getDiscussById(id)
+	                        .orElseThrow(() -> new RuntimeException("DiscussDTO not found"));
+	    model.addAttribute("discussDTO", discussDTO);
 //	    model.addAttribute("actionRecord", new ActionRecord()); // 新增行為紀錄用的物件
 	    return "discuss/discuss"; // JSP頁面名稱
 	}

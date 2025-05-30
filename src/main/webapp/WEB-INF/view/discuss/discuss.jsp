@@ -18,18 +18,18 @@
 			<div class="left-section">
 			    <!-- 標題與按鈕列 -->
 			    <div class="header-row">
-			    	<h2 class="title-text">${discuss.title}</h2>
+			    	<h2 class="title-text">${discussDTO.title}</h2>
 		    	  	<div>
-		        	<a href="editDiscuss?id=${discuss.discussId}" class="btn btn-danger">編輯</a>
-		        	<a href="deleteDiscuss?id=${discuss.discussId}" class="btn btn-danger">刪除</a>
+		        	<a href="editDiscuss?id=${discussDTO.discussId}" class="btn btn-danger">編輯</a>
+		        	<a href="deleteDiscuss?id=${discussDTO.discussId}" class="btn btn-danger">刪除</a>
 		    	  	</div>
 		    	</div>
 		
 			    <!-- 描述 -->
-			    <p class="description-text">${discuss.description}</p>
+			    <p class="description-text">${discussDTO.description}</p>
 		
 		    	<!-- YouTube 嵌入影片 -->
-		    	<iframe class="video-frame" src="https://www.youtube.com/embed/${discuss.youtubeVideoId}"
+		    	<iframe class="video-frame" src="https://www.youtube.com/embed/${discussDTO.youtubeVideoId}"
 		    			frameborder="0" allowfullscreen></iframe>
 		  
 		    	<!-- 留白區 -->
