@@ -19,8 +19,8 @@ public class HomeController {
 	private DiscussService discussService;
 	
 	@GetMapping
-	public String mainPage(Model model) {
-		model.addAttribute("discuss", discussService.getAllDiscuss());
+	public String mainPage(Model model, String youtubeVideoId) {
+		model.addAttribute("discussList", discussService.getAllDiscuss());
 		return "main";
 	}
 	

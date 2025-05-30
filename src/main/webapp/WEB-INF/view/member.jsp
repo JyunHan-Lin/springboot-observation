@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="/css/basic.css">
 		<link rel="stylesheet" href="/css/layout.css">
-		<title>Bird Behavior Document🐣</title>
+		<title>🐣 Bird Behavior Document</title>
 	</head>
 	<body class="container fontstyle">
 		<!-- menu bar include -->

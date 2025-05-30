@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Bird Behavior Document🐣</title>
+		<title>🐣 Bird Behavior Document</title>
 		<link rel="stylesheet" href="/css/basic.css">
 		<link rel="stylesheet" href="/css/layout.css">
 	</head>

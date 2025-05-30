@@ -5,39 +5,18 @@
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <link rel="stylesheet" href="/css/basic.css">
 <link rel="stylesheet" href="/css/layout.css">
-<div class="fontstyle">
-	<fieldset>
-		<legend>已建立的討論串列表</legend>
-		<table class="">
-			<thead>
-				<tr><th>編號</th><th>標題</th><th>描述</th></tr>
-			</thead>
-			<tbody>
-				<c:forEach var="discuss" items="${ discuss }">
-					<tr>
-						<td>${ discuss.discussId }</td>
-						<td>
-						    <a href="${pageContext.request.contextPath}/bbd/discuss/${discuss.discussId}">
-	       					 ${discuss.title}
-	     					</a>
-						</td>						
-						<td>${ discuss.description }</td>
-					</tr>	
-				</c:forEach>
-			</tbody>
-		</table>
-	</fieldset>
-</div>
 
-<!-- demo完再測試
- <div class="video-list-container">
-	  <div class="video-card">
-	    <img src="https://img.youtube.com/vi/影片ID/mqdefault.jpg"-存取資料庫youtube的封面? alt="YouTube封面" />
-    	<div class="video-title">
-		    <a href="${pageContext.request.contextPath}/bbd/discuss/${discuss.discussId}">
-				 ${discuss.title}
-			</a>
-    	</div>
-    	<div class="video-description">${ discuss.description }</div>
-  </div>
-   -->
+<legend>已建立的討論串列表</legend>
+	<fieldset>
+		<c:forEach var="discuss" items="${discussList}">
+		  <div class="video-card">
+		    <img src="https://img.youtube.com/vi/${discuss.youtubeVideoId}/mqdefault.jpg" alt="YouTube封面" />
+		    <div class="video-title">
+		      <a href="${pageContext.request.contextPath}/bbd/discuss/${discuss.discussId}">
+		         ${discuss.title}
+		      </a>
+		    </div>
+		    <div class="video-description">${ discuss.description }</div>
+		  </div>
+		</c:forEach>
+	</fieldset>

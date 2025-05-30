@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>請重新註冊🐣</title>
+		<title>🐣 請重新註冊</title>
 		<link rel="stylesheet" href="/css/basic.css">
 		<link rel="stylesheet" href="/css/layout.css">	
 	</head>
