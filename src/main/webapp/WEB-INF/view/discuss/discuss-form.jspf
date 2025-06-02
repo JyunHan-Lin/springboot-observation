@@ -9,7 +9,7 @@
     <legend class="title">建立討論串</legend>
     	標題: <sp:input type="text" path="title" placeholder="請輸入標題"/><p />
     	<p/>
-    	描述: <sp:input type="textarea" path="description" placeholder="請描述內容" /><p />
+    	描述: <sp:input type="text" path="description" placeholder="請描述內容" /><p />
     	<p/>
     	Youtube連結: <sp:input type="text" path="youtubeVideoId" placeholder="請輸入連結" /><p />
     	<p/>

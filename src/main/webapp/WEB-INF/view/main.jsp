@@ -10,14 +10,9 @@
 	</head>
 	<body class="fontstyle">
 		<!-- menu bar include -->
-		<%@ include file="/WEB-INF/view/menu.jspf" %>				
-		<table>
-			<tr>				
-				<!-- 列表 Rooms -->
-				<td valign="top">
-					<%@ include file="/WEB-INF/view/discuss/discuss-list.jspf" %>	
-				</td>
-			</tr>
-		</table>
+		<%@ include file="/WEB-INF/view/menu.jspf" %>								
+		
+		<!-- 列表 -->
+		<%@ include file="/WEB-INF/view/discuss/discuss-list.jspf" %>	
 	</body>
 </html>

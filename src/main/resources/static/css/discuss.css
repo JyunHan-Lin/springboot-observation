@@ -9,6 +9,7 @@
 /* 左側內容區 */
 .left-section {
   width: 66%;
+  margin-top: 20px;
 }
 
 /* 標題列，標題靠左，按鈕靠右 */
@@ -52,13 +53,14 @@
   border: 1px solid #ccc;
   padding: 15px;
   border-radius: 5px;
+  margin-top: 20px;
 }
 
 /* 表單區標題 */
 .form-title {
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 /* 表單欄位標籤 */
@@ -83,6 +85,43 @@
 /* 備註欄 */
 .right-section textarea {
   resize: vertical;
+}
+
+.time-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.time-row label {
+  white-space: nowrap; /* 避免文字換行 */
+}
+
+.time-row input[type="time"] {
+  width: 130px;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 120px; /* 可根據需要調整 */
+}
+
+input[type="text"] {
+  padding: 4px 8px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* 按鈕樣式 */

@@ -11,14 +11,8 @@
 	<body class="fontstyle">
 		<!-- menu bar include -->
 		<%@ include file="/WEB-INF/view/menu.jspf" %>
-
- 		<table>
-			<tr>				
-				<!-- 列表 -->
-				<td valign="top">
-					<%@ include file="/WEB-INF/view/discuss/discuss-form.jspf" %>	
-				</td>
-			</tr>
-		</table>
+			
+		<!-- 列表 -->
+		<%@ include file="/WEB-INF/view/discuss/discuss-form.jspf" %>	
 	</body>
 </html>

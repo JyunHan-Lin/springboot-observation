@@ -20,8 +20,12 @@
 			    <div class="header-row">
 			    	<h2 class="title-text">${discussDTO.title}</h2>
 		    	  	<div>
-		        	<a href="editDiscuss?id=${discussDTO.discussId}" class="btn btn-danger">編輯</a>
-		        	<a href="deleteDiscuss?id=${discussDTO.discussId}" class="btn btn-danger">刪除</a>
+		        		<a href="/bbd/discuss/update/${ discussDTO.discussId }" class="btn btn-danger">編輯</a>
+		        		<p>       	
+						<form method="post" action="/bbd/discuss/delete/${ discussDTO.discussId }">
+							<input type="hidden" name="_method" value="DELETE" />
+							<button type="submit" class="btn btn-danger" >刪除</button>
+						</form>	
 		    	  	</div>
 		    	</div>
 		
@@ -44,11 +48,14 @@
 			      	<label>日期：</label>
 		    	  	<input type="date" name="date" />
 		
-		      		<label>時間：</label>
-		      	  	<input type="time" name="startTime" />
-		      		<span>~</span>
-		      		<input type="time" name="endTime" />
-		
+					<!-- 加上這個容器 -->
+					<div class="time-row">
+					  <label for="startTime">時間：</label>
+					  <input type="time" name="startTime" id="startTime" />
+					  <span>～</span>
+					  <input type="time" name="endTime" id="endTime" />
+					</div>
+
 		      		<label>對象：</label>
 		      		<select name="target">
 		        	<option value="">請選擇</option>
@@ -62,13 +69,19 @@
 				    
 		        	<!-- 選項 -->
 		      		</select>
-		
-		      		<label>溫度：</label>
-		      		<input type="text" name="temperature" placeholder="℃" />
-		
-		      		<label>濕度：</label>
-		      		<input type="text" name="humidity" placeholder="%" />
-		
+
+					<!-- 溫度與濕度欄位在同一行 -->
+					<div class="form-row">
+					  <div class="form-group">
+					    <label>溫度：</label>
+					    <input type="text" name="temperature" placeholder="℃" />
+					  </div>
+					  <div class="form-group">
+					    <label>濕度：</label>
+					    <input type="text" name="humidity" placeholder="%" />
+					  </div>
+					</div>
+
 		      		<label>備註：</label>
 		      		<textarea name="note" maxlength="100" placeholder="限100字內"></textarea>
 		

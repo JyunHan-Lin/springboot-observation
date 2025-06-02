@@ -175,8 +175,11 @@ form.user button {
 .video-list-container {
   width: 1000px;
   margin: 30px auto;
+}
+
+.video-list {	
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 10px;
 }
@@ -199,6 +202,7 @@ form.user button {
 .video-title {
   font-weight: bold;
   font-size: 18px;
+  color: #555;
   margin-top: 10px;
 }
 
@@ -208,10 +212,21 @@ form.user button {
   margin-top: 5px;
 }
 
+.video-title a {
+  color: #000;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.video-title a:hover {
+  color: #0077cc;
+  text-decoration: underline;
+}
 
 
 a {
-  color: white;
+  color: #f6f6f6;
   text-decoration: none; /* 取消底線 */
 }
 
