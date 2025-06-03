@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.model.dto.UserCert;
 import com.example.demo.service.DiscussService;
 import com.example.demo.service.UserService;
 
@@ -19,8 +20,10 @@ public class HomeController {
 	private DiscussService discussService;
 	
 	@GetMapping
-	public String mainPage(Model model, String youtubeVideoId) {
-		model.addAttribute("discussList", discussService.getAllDiscuss());
+	public String mainPage(Model model, String youtubeVideoId, HttpSession session) {
+	    UserCert userCert = (UserCert) session.getAttribute("userCert");
+	    Integer userId = userCert.getUserId();
+	    model.addAttribute("discussList", discussService.getDiscussByUserId(userId));
 		return "main";
 	}
 	

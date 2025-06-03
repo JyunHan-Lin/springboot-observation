@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 	    }
 		String salt = HashUtil.getSalt();
 		String passwordHash = HashUtil.getHash(password, salt);
-		User user = new User(null, username, passwordHash, salt, email, active, role);
+		User user = new User(null, username, passwordHash, salt, email, active, role, null);
 		userRepository.save(user);
 		System.out.println("使用者註冊成功");
 		

@@ -24,4 +24,6 @@ public class DiscussDTO {
 	private String youtubeVideoId;
 	
 	private LocalDateTime createdTime = LocalDateTime.now();
+
+	private Integer userId;
 }

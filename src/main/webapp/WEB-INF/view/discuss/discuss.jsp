@@ -39,55 +39,9 @@
 		    	<!-- 留白區 -->
 		    	<div class="placeholder-box"></div>
 		  	</div>
-		
 		  	<!-- 右側區域：行為紀錄表單 -->
-		  	<div class="right-section">
-		    	<h3 class="form-title">行為紀錄</h3>
-		
-			    <form action="submitBehaviorRecord" method="post">
-			      	<label>日期：</label>
-		    	  	<input type="date" name="date" />
-		
-					<!-- 加上這個容器 -->
-					<div class="time-row">
-					  <label for="startTime">時間：</label>
-					  <input type="time" name="startTime" id="startTime" />
-					  <span>～</span>
-					  <input type="time" name="endTime" id="endTime" />
-					</div>
-
-		      		<label>對象：</label>
-		      		<select name="target">
-		        	<option value="">請選擇</option>
-		        	
-		        	<!-- 選項 -->
-		      		</select>
-		
-		      		<label>行為：</label>
-				    <select name="behavior">
-				    <option value="">請選擇</option>
-				    
-		        	<!-- 選項 -->
-		      		</select>
-
-					<!-- 溫度與濕度欄位在同一行 -->
-					<div class="form-row">
-					  <div class="form-group">
-					    <label>溫度：</label>
-					    <input type="text" name="temperature" placeholder="℃" />
-					  </div>
-					  <div class="form-group">
-					    <label>濕度：</label>
-					    <input type="text" name="humidity" placeholder="%" />
-					  </div>
-					</div>
-
-		      		<label>備註：</label>
-		      		<textarea name="note" maxlength="100" placeholder="限100字內"></textarea>
-		
-		      		<button type="submit" class="btn btn-success">送出</button>
-		    	</form>
-		  	</div>
+		  	<!-- Behavior -->
+			<%@ include file="/WEB-INF/view/behavior/behavior-form.jspf" %>	
 		</div>
 	</body>
 </html>

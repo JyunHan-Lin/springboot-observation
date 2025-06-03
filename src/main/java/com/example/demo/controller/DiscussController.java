@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.model.dto.DiscussDTO;
+import com.example.demo.model.dto.UserCert;
 import com.example.demo.model.entity.Discuss;
 import com.example.demo.service.DiscussService;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 
@@ -36,7 +38,11 @@ public class DiscussController {
 	
 	// 建立討論串
 	@PostMapping("/new")
-	public String saveDiscuss(@ModelAttribute DiscussDTO discussDTO) {
+	public String saveDiscuss(@ModelAttribute DiscussDTO discussDTO, HttpSession session) {
+		UserCert userCert = (UserCert) session.getAttribute("userCert");
+		// 將 userId 放入 DTO
+	    discussDTO.setUserId(userCert.getUserId());
+		
 		DiscussDTO savedDiscuss = discussService.createDiscuss(discussDTO);
 	    return "redirect:/bbd/discuss/" + savedDiscuss.getDiscussId();
 	}
@@ -77,7 +83,7 @@ public class DiscussController {
 //		}
 		
 		// 進行修改
-		discussService.updateRoom(discussId, discussDTO);
+		discussService.updateDiscuss(discussId, discussDTO);
 		return "redirect:/bbd/discuss/" + discussId;
 	}
 
@@ -85,7 +91,7 @@ public class DiscussController {
 	// 刪除
 	@DeleteMapping("/delete/{discussId}")
 	public String deleteRoom(@PathVariable Integer discussId) {
-		discussService.deleteRoom(discussId);
+		discussService.deleteDiscuss(discussId);
 		return "redirect:/bbd"; // 重導到首頁
 	}
 	

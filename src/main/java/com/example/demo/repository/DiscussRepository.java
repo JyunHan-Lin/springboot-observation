@@ -9,5 +9,6 @@ import com.example.demo.model.entity.Discuss;
 
 @Repository
 public interface DiscussRepository extends JpaRepository<Discuss, Integer>{
+	List<Discuss> findByUser_UserId(Integer userId);
 	List<Discuss> findByTitle(String title);
 }

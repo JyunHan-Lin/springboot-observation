@@ -1,5 +1,7 @@
 package com.example.demo.model.dto;
 
+import java.util.List;
+
 import org.hibernate.validator.constraints.Range;
 
 import jakarta.persistence.Column;
@@ -17,4 +19,5 @@ public class UserDTO {
 	private String email;	// 使用者Email
 	private Boolean active;	// 
 	private String role;	// 角色權限
+	private List<DiscussDTO> discusses;
 } // 如果講求一點, entity 跟 dto 兩邊命名會用不一樣的, 不然前端可以從命名反推程式(資安: 前端混淆)
