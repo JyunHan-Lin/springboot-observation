@@ -1,10 +1,14 @@
 package com.example.demo.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.mapper.BehaviorMapper;
 import com.example.demo.model.dto.BehaviorDTO;
+import com.example.demo.model.dto.DiscussDTO;
 import com.example.demo.model.entity.Behavior;
 import com.example.demo.model.entity.Discuss;
 import com.example.demo.repository.BehaviorRepository;
@@ -20,6 +24,10 @@ public class BehaviorServiceImpl implements BehaviorService{
 	@Autowired
 	private DiscussRepository discussRepository;
 	
+	@Autowired
+	private BehaviorMapper behaviorMapper;
+	
+	@Override
     public void saveBehavior(Integer discussId, BehaviorDTO behaviorDTO) {
         Optional<Discuss> discussOpt = discussRepository.findById(discussId);
         if (discussOpt.isPresent()) {
@@ -41,4 +49,12 @@ public class BehaviorServiceImpl implements BehaviorService{
         behaviorRepository.save(behavior);
         }
     }
+    
+	@Override
+	public List<BehaviorDTO> getAllBehavior() {
+	    List<Behavior> behaviors = behaviorRepository.findAll();
+	    return behaviors.stream()
+	            		.map(behaviorMapper::toDTO)
+	            		.toList();
+	}
 }

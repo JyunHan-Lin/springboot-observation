@@ -8,24 +8,29 @@
 		<link rel="stylesheet" href="/css/layout.css">
 		<title>🐣 Bird Behavior Document</title>
 	</head>
-	<body class="container fontstyle">
+	<body class="center-wrapper fontstyle">
 		<!-- menu bar include -->
 		<%@ include file="/WEB-INF/view/menu.jspf" %>
 		
 		<form method="POST" action="/bbd/codeedit">
  			<fieldset class="">
- 				<legend>變更密碼</legend>
-			 	<label for="password">輸入舊密碼：</label>
-			 	<input type="password" id="oldpassword" name="password" required><br>
-			 	
-			 	<label for="password">輸入新密碼：</label>
-			 	<input type="password" id="newpassword1" name="password" required><br>
-			 	
-			 	<label for="password">再輸入一次新密碼：</label>
-			 	<input type="password" id="newpassword2" name="password" required><br>
-			 	
-				<button type="reset" >重置</button>
-			 	<button type="submit">確認送出</button>
+ 				<legend>會員資料變更</legend>
+ 				
+ 				<div class="form-title">密碼變更</div>
+ 					<div class="code-section">
+					 	<label for="password">輸入舊密碼：</label>
+					 	<input type="password" id="oldpassword" name="password" required><br>
+					 	
+					 	<label for="password">輸入新密碼：</label>
+					 	<input type="password" id="newpassword1" name="password" required><br>
+					 	
+					 	<label for="password">再輸入一次新密碼：</label>
+					 	<input type="password" id="newpassword2" name="password" required><br>
+					 	<p>
+						<button type="reset" class="btn btn-success">重置</button>
+					 	<p>
+					 	<button type="submit"class="btn btn-success">確認送出</button>
+ 					</div>
  			</fieldset>
  		</form>
 	</body>

@@ -224,6 +224,29 @@ form.user button {
   text-decoration: underline;
 }
 
+.list-order {
+  overflow-x: auto;     /* 水平捲軸 */
+  display: block;       /* 讓 overflow 生效 */
+  max-width: 100%;      /* 不讓超出容器 */
+  padding: 8px;
+  text-align: center;
+}
+
+.center-wrapper {
+  display: flex;
+  justify-content: center;  /* 水平置中 */
+  align-items: center;      /* 垂直置中 */
+  height: 100vh;            /* 高度佔滿整個畫面 */
+}
+
+/* 右側表單區 */
+.code-section {
+  width: 34%;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
 
 a {
   color: #f6f6f6;

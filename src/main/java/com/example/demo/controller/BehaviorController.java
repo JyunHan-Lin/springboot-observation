@@ -1,7 +1,11 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,4 +29,12 @@ public class BehaviorController {
 		behaviorService.saveBehavior(discussId, behaviorDTO);
 		return "redirect:/bbd/discuss/" + discussId;
 	}
+	
+	@GetMapping("/{discussId}/list")
+	public String showDiscussList(Model model) {
+	    List<BehaviorDTO> behaviorList = behaviorService.getAllBehavior();
+	    model.addAttribute("behaviorList", behaviorList);
+	    return "discuss-list";
+	}
+	
 }

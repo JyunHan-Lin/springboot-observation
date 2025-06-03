@@ -53,5 +53,5 @@
 					<button type="submit" class="btn btn-success">送出</button>		      		
 		    	</sp:form>
 					<p>
-		      		<button type="submit" class="btn btn-success">查看紀錄清單</button>
+		      		<a type="submit" class="btn btn-success" href="${pageContext.request.contextPath}/bbd/discuss/behavior/${discussDTO.discussId}/list">查看紀錄清單</a>
 		  	</div>
