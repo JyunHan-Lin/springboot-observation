@@ -16,7 +16,7 @@
 		<!-- menu bar include -->
 		<%@ include file="/WEB-INF/view/menu.jspf" %>								
 		
-		<sp:form class="fontstyle" method="post" modelAttribute="behaviorDTO" action="/bbd/discuss/behavior/edit/${ behaviorDTO.behaviorId }" >
+		<sp:form class="fontstyle" method="post" modelAttribute="behaviorDTO" action="/bbd/discuss/behavior/${ behaviorDTO.discussId }/edit/${ behaviorDTO.behaviorId }" >
 		  <fieldset class="discussion-form">
 			<input type="hidden" name="_method" value="PUT" />
 		    <legend class="title">編輯行為</legend>

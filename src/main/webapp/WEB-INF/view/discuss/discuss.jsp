@@ -37,7 +37,9 @@
 		    			frameborder="0" allowfullscreen></iframe>
 		  
 		    	<!-- 留白區 -->
-		    	<div class="placeholder-box"></div>
+		    	<div class="placeholder-box">
+	   				<%@ include file="/WEB-INF/view/charts/googlecharts.jspf" %>	
+		    	</div>
 		  	</div>
 		  	<!-- 右側區域：行為紀錄表單 -->
 		  	<!-- Behavior -->

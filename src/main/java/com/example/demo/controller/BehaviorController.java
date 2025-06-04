@@ -31,11 +31,6 @@ public class BehaviorController {
 	@Autowired
 	private BehaviorService behaviorService;
 	
-	@Autowired
-	private DiscussService discussService;
-	
-	@Autowired
-	private BehaviorRepository behaviorRepository;
 	
 	@PostMapping("/{discussId}")
 	public String save(@PathVariable Integer discussId, BehaviorDTO behaviorDTO, HttpSession session) {
@@ -56,8 +51,8 @@ public class BehaviorController {
 	}
 	
 	// 編輯討論串(標題、描述、網址: 點選到裡面再編輯) 
-		@GetMapping("/edit/{behaviorId}")
-		public String showEditBehavior(@PathVariable Integer behaviorId, Model model) {
+		@GetMapping("/{discussId}/edit/{behaviorId}")
+		public String showEditBehavior(@PathVariable Integer behaviorId, @PathVariable Integer discussId,  Model model) {
 		    BehaviorDTO behaviorDTO = behaviorService.getBehaviorById(behaviorId)
 		    									     .orElseThrow(() -> new RuntimeException("not found"));
 		    model.addAttribute("behaviorDTO", behaviorDTO);
@@ -65,27 +60,22 @@ public class BehaviorController {
 		    return "behavior/behavior-edit"; // 編輯頁面的 JSP 名稱
 		}
 
-		@PutMapping("/edit/{behaviorId}")
-		public String updateBehavior(@PathVariable Integer behaviorId, @Valid BehaviorDTO behaviorDTO, DiscussDTO discussDTO, BindingResult bindingResult) {
+		@PutMapping("/{discussId}/edit/{behaviorId}")
+		public String updateBehavior(@PathVariable Integer behaviorId, @PathVariable Integer discussId, @Valid BehaviorDTO behaviorDTO, DiscussDTO discussDTO, BindingResult bindingResult) {
 			// 驗證資料
 //			if (bindingResult.hasErrors()) { // 若驗證時有錯誤發生
 //				return "discuss/discuss-edit";
 //			}
-			DiscussDTO savedDiscuss = discussService.createDiscuss(discussDTO);
 			// 進行修改
 			behaviorService.updateBehavior(behaviorId, behaviorDTO);
-			return "redirect:/bbd/discuss/behavior/" + savedDiscuss.getDiscussId() + "/list";
+			return "redirect:/bbd/discuss/behavior/" + discussId + "/list";
 		}
 		
 		// 刪除
-		@DeleteMapping("/delete/{behaviorId}")
-		public String deleteBehavior(@PathVariable Integer behaviorId, BehaviorDTO behaviorDTO, DiscussDTO discussDTO) {
-			Integer discussId = behaviorDTO.getDiscussId();
-
-			DiscussDTO savedDiscuss = discussService.createDiscuss(discussDTO);
-
+		@DeleteMapping("/{discussId}/delete/{behaviorId}")
+		public String deleteBehavior(@PathVariable Integer behaviorId, @PathVariable Integer discussId, BehaviorDTO behaviorDTO, DiscussDTO discussDTO) {
 			behaviorService.deleteBehavior(behaviorId);
-			return "redirect:/bbd/discuss/behavior/" + savedDiscuss.getDiscussId() + "/list"; 
+			return "redirect:/bbd/discuss/behavior/" + discussId + "/list"; 
 		}
 		
 	
