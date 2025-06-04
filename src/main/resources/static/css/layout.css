@@ -248,6 +248,22 @@ form.user button {
   margin-top: 20px;
 }
 
+.behavior-form {
+  width: 1000px;
+  margin: 50px auto; /* 水平置中，並往下推一點 */
+  padding: 20px;
+  border: 2px solid #ccc;
+  position: relative;
+  background-color: #f9f9f9;
+}
+
+.behavior-form th,
+.behavior-form td {
+  padding: 8px 12px;
+  text-align: center;
+}
+
+
 a {
   color: #f6f6f6;
   text-decoration: none; /* 取消底線 */

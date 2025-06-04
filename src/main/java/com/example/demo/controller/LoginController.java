@@ -47,6 +47,8 @@ public class LoginController {
 	}
 	// 將憑證放到 session
 	session.setAttribute("userCert", userCert);
+	session.setAttribute("userId", userCert.getUserId());
+
 	return "redirect:/bbd"; // 重導到首頁
 
 	}

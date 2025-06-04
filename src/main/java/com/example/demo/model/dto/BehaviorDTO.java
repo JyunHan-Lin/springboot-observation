@@ -1,6 +1,7 @@
 package com.example.demo.model.dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,4 +20,6 @@ public class BehaviorDTO {
     private Integer temperature;
     private Integer humidity;
     private String note;
+	private LocalDateTime createdTime = LocalDateTime.now();
+	private Integer discussId;
 }

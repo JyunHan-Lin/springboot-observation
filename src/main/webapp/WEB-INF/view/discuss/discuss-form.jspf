@@ -15,7 +15,7 @@
     	<p/>
     	<div class="button-wrapper">
 			<button type="reset">重置</button>
-	    	<button type="submit" class="">建立</button>
+	    	<button type="submit">建立</button>
     	</div>
   </fieldset>
 </sp:form>

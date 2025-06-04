@@ -1,6 +1,7 @@
 package com.example.demo.model.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -48,7 +49,15 @@ public class Behavior {
 	@Column(name = "note", length = 100)
     private String note;
 	
+	@Column(name = "created_time")
+	private LocalDateTime createdTime = LocalDateTime.now();
+	
 	@ManyToOne
 	@JoinColumn(name = "discuss_id") // 資料庫欄位名
 	private Discuss discuss;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
 }
