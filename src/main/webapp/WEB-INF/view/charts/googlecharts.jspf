@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- Spring Form 表單標籤 -->
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form" %>
 <html>
   <head>
@@ -37,6 +39,12 @@
       // Set a callback to run when the Google Visualization API is loaded.
       google.charts.setOnLoadCallback(drawChart);
 
+      function drawChart() {
+        drawCountByDateSubjectChart();
+        drawDurationByDateActionChart();
+        drawActionCountBySubjectChart();
+      }
+
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
@@ -58,6 +66,42 @@
 		  var chart = new google.visualization.ColumnChart(document.getElementById('count_chart_div'));
 		  chart.draw(data, options);
 		}
+      
+      function drawDurationByDateActionChart() {
+    	  var data = new google.visualization.DataTable();
+    	  data.addColumn('string', '日期_行為');
+    	  data.addColumn('number', '總時長(分鐘)');
+    	  data.addRows(durationByDateAction);
+
+    	  var options = {
+    	    title: '同日中各行為所花時間',
+    	    width: 600,
+    	    height: 400,
+    	    hAxis: { title: '日期_行為' },
+    	    vAxis: { title: '分鐘數' }
+    	  };
+
+    	  var chart = new google.visualization.ColumnChart(document.getElementById('duration_chart_div'));
+    	  chart.draw(data, options);
+    	}
+
+    	function drawActionCountBySubjectChart() {
+    	  var data = new google.visualization.DataTable();
+    	  data.addColumn('string', '對象');
+    	  data.addColumn('number', '行為種類數');
+    	  data.addRows(actionCountBySubject);
+
+    	  var options = {
+    	    title: '每個對象的行為種類數',
+    	    width: 600,
+    	    height: 400,
+    	    hAxis: { title: '對象' },
+    	    vAxis: { title: '行為種類數' }
+    	  };
+
+    	  var chart = new google.visualization.BarChart(document.getElementById('actioncount_chart_div'));
+    	  chart.draw(data, options);
+    	}
 
     </script>
   </head>
