@@ -50,4 +50,25 @@ public class UserServiceImpl implements UserService {
 	        return false;
 	    }
 	}
+	
+	// 改密碼
+	public boolean changePassword(String email, String oldPassword, String newPassword, String confirmPassword) {
+        Optional<User> optUser = userRepository.findByEmail(email);
+
+        if (optUser.isEmpty()) return false;
+
+        User user = optUser.get();
+
+        // 檢查舊密碼是否正確
+        if (!passwordEncoder.matches(oldPassword, user.getPassword())) return false;
+
+        // 檢查新密碼與確認是否相同
+        if (!newPassword.equals(confirmPassword)) return false;
+        
+        String salt = HashUtil.getSalt();
+		String passwordHash = HashUtil.getHash(password, salt);
+		user.setPassword(passwordEncoder.encode(passwordHash));
+        userRepository.save(user);
+        return true;
+	}
 }

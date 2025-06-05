@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!-- Spring Form 表單標籤 -->
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
+<%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form" %>
+<!--Load the AJAX API-->
+<link rel="stylesheet" href="/css/basic.css">
+<link rel="stylesheet" href="/css/layout.css">
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script>
+	  // 將 Java Map 轉成 JS 物件陣列（用 JSTL 或 Expression Language）
+	  var actionCountBySubject = [
+	    <c:forEach var="entry" items="${actionCountBySubject}" varStatus="status">
+	      ['${fn:escapeXml(entry.key)}', ${entry.value}]<c:if test="${!status.last}">,</c:if>
+	    </c:forEach>
+	  ];
+	</script>
+   
+  	<script type="text/javascript">
+     // Load the Visualization API and the corechart package.
+     google.charts.load('current', {'packages':['corechart']});
+
+     // Set a callback to run when the Google Visualization API is loaded.
+     google.charts.setOnLoadCallback(drawChart);
+
+     function drawChart() {
+       drawActionCountBySubjectChart();
+     }
+
+     // Callback that creates and populates a data table,
+     // instantiates the pie chart, passes in the data and
+     // draws it.
+   	function drawActionCountBySubjectChart() {
+   	  var data = new google.visualization.DataTable();
+   	  data.addColumn('string', '對象');
+   	  data.addColumn('number', '行為種類數');
+   	  data.addRows(actionCountBySubject);
+
+   	  var options = {
+   	    title: '每個對象的行為種類數',
+   	    width: 600,
+   	    height: 400,
+   	    hAxis: { title: '對象' },
+   	    vAxis: { title: '行為種類數' }
+   	  };
+
+   	  var chart = new google.visualization.BarChart(document.getElementById('actioncount_chart_div'));
+   	  chart.draw(data, options);
+   	}
+   	
+   	console.log("actionCountBySubject:", actionCountBySubject);
+   </script>

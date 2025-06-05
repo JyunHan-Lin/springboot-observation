@@ -11,7 +11,11 @@
 	<body class="fontstyle">
 		<!-- menu bar include -->
 		<%@ include file="/WEB-INF/view/menu.jspf" %>								
-		
+		<!-- 搜尋欄 -->
+		<form method="get" action="/bbd/discuss/search">
+    		<input type="text" name="keyword" placeholder="輸入關鍵字搜尋..." />
+    		<button type="submit">搜尋</button>
+		</form>
 		<!-- 列表 -->
 		<%@ include file="/WEB-INF/view/discuss/discuss-list.jspf" %>	
 	</body>

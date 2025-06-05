@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="/css/layout.css">
 		<link rel="stylesheet" href="/css/discuss.css">
 		<title>🐣 Bird Behavior Document</title>
+		<%@ include file="/WEB-INF/view/charts/googlecharts-head.jspf" %>	
 	</head>
 	<body class="fontstyle">
 		<!-- menu bar include -->
@@ -37,8 +38,9 @@
 		    			frameborder="0" allowfullscreen></iframe>
 		  
 		    	<!-- 留白區 -->
+		    	<a href="/bbd/discuss/stats/${discussDTO.discussId} }">產生圖表</a>
 		    	<div class="placeholder-box">
-	   				<%@ include file="/WEB-INF/view/charts/googlecharts.jspf" %>	
+	   				<%@ include file="/WEB-INF/view/charts/googlecharts-body.jspf" %>	
 		    	</div>
 		  	</div>
 		  	<!-- 右側區域：行為紀錄表單 -->
