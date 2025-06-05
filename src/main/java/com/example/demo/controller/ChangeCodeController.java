@@ -40,6 +40,6 @@ public class ChangeCodeController {
             redirectAttributes.addFlashAttribute("errorMessage", "密碼變更失敗，請確認原密碼與新密碼是否符合。");
         }
 
-        return "redirect:/bbd/user/change-password";
+        return "redirect:/bbd";
     }
 }

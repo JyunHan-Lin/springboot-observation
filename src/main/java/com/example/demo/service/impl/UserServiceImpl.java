@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.exception.PasswordInvalidException;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.model.dto.UserDTO;
 import com.example.demo.model.entity.User;
@@ -55,19 +56,29 @@ public class UserServiceImpl implements UserService {
 	public boolean changePassword(String email, String oldPassword, String newPassword, String confirmPassword) {
         Optional<User> optUser = userRepository.findByEmail(email);
 
-        if (optUser.isEmpty()) return false;
+        if (optUser.isEmpty()) 
+        	return false;
 
         User user = optUser.get();
 
         // 檢查舊密碼是否正確
-        if (!passwordEncoder.matches(oldPassword, user.getPassword())) return false;
-
+        String passwordHash = HashUtil.getHash(oldPassword, user.getSalt());
+		if(!passwordHash.equals(user.getPasswordHash())) {
+			throw new RuntimeException("原本密碼輸入錯誤");
+		}
+		
+		// 檢查新密碼是否與舊密碼重複
+		String confirmedPassword = HashUtil.getHash(newPassword, user.getSalt());
+        if (!confirmedPassword.equals(passwordHash)) {
+    		throw new RuntimeException("新密碼不可與舊密碼重複");
+        }
         // 檢查新密碼與確認是否相同
-        if (!newPassword.equals(confirmPassword)) return false;
-        
-        String salt = HashUtil.getSalt();
-		String passwordHash = HashUtil.getHash(password, salt);
-		user.setPassword(passwordEncoder.encode(passwordHash));
+		String checkedPassword = HashUtil.getHash(confirmPassword, user.getSalt());
+        if (!checkedPassword.equals(confirmedPassword)) {
+			throw new RuntimeException("新密碼不可與舊密碼重複");
+        }
+
+        user.setPasswordHash(checkedPassword);
         userRepository.save(user);
         return true;
 	}
