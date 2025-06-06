@@ -1,0 +1,79 @@
+.discussion-form {
+ width: 400px;
+ margin: 50px auto; /* 水平置中，並往下推一點 */
+ padding: 20px;
+ border: 2px solid #ccc;
+ position: relative;
+ background-color: #f9f9f9;
+}
+
+.discussion-form input,
+.discussion-form textarea {
+ width: 100%;
+ padding: 10px;
+ margin-top: 5px;
+ margin-bottom: 15px;
+ box-sizing: border-box;
+ font-size: 16px;
+}
+
+.discussion-form textarea {
+ height: 100px; /* 讓描述輸入框大一點 */
+ resize: vertical;
+}
+
+.discussion-form button {
+ padding: 10px 20px;   /* 上下10px、左右20px */
+ font-size: 16px;      /* 字體大小 */
+ border-radius: 5px;   /* 圓角 */
+ background-color: #4CAF50;
+ color: white;
+ border: none;
+ cursor: pointer;
+ text-align:right;
+}
+
+.discussion-form button:hover {
+ background-color: #45a049;
+}
+
+.title{
+	font-size:20px;
+}
+
+.time-row {
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ margin-bottom: 10px;
+}
+
+.time-row label {
+ white-space: nowrap; /* 避免文字換行 */
+}
+
+.time-row input[type="time"] {
+ width: 130px;
+}
+
+.form-row {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ margin-bottom: 10px;
+ flex-wrap: wrap;
+}
+
+.form-group {
+ display: flex;
+ flex-direction: column;
+ flex: 1;
+ min-width: 120px; /* 可根據需要調整 */
+}
+
+input[type="text"] {
+ padding: 4px 8px;
+ font-size: 14px;
+ width: 100%;
+ box-sizing: border-box;
+}

@@ -4,9 +4,8 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form" %>
+
 <!--Load the AJAX API-->
-<link rel="stylesheet" href="/css/basic.css">
-<link rel="stylesheet" href="/css/layout.css">
    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
    <script>
 	  // 將 Java Map 轉成 JS 物件陣列（用 JSTL 或 Expression Language）
@@ -39,8 +38,8 @@
 
    	  var options = {
    	    title: '每個對象的行為種類數',
-   	    width: 600,
-   	    height: 400,
+   	    width: 300,
+   	    height: 200,
    	    hAxis: { title: '對象' },
    	    vAxis: { title: '行為種類數' }
    	  };

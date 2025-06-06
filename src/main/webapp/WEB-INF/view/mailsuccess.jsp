@@ -4,7 +4,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>🐣 註冊成功</title>
+		<title>Bird Behavior Document</title>
+		<link rel="icon" type="image/png" href="/images/icon.png">
 		<link rel="stylesheet" href="/css/basic.css">
 		<link rel="stylesheet" href="/css/layout.css">
 	</head>

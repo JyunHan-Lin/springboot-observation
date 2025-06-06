@@ -43,7 +43,7 @@
 /* 留白區塊 */
 .placeholder-box {
   height: 200px;
-  border: 1px dashed #ccc;
+  border: 1px solid #ccc;
   margin-top: 20px;
 }
 

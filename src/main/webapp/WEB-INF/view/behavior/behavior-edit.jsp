@@ -7,10 +7,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>🐣 Bird Behavior Document</title>
 		<link rel="stylesheet" href="/css/basic.css">
-		<link rel="stylesheet" href="/css/layout.css">
-		<link rel="stylesheet" href="/css/discuss.css">
+		<link rel="stylesheet" href="/css/common.css">
+		<link rel="stylesheet" href="/css/behavior-edit.css">
+		<title>Bird Behavior Document</title>
+		<link rel="icon" type="image/png" href="/images/icon.png">
 	</head>
 	<body>
 		<!-- menu bar include -->

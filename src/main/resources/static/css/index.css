@@ -6,13 +6,14 @@
 }
 
 .view{
+	background: black;
 	background-image:url('/images/index.jpg');
-	background-size: cover;       /* 讓背景圖覆蓋整個容器 */
-  	background-position: center;  /* 圖片置中對齊 */
+	background-size: 100% auto;       /* 讓背景圖覆蓋整個容器 */
+  	background-position: top;  /* 圖片置中對齊 */
   	background-repeat: no-repeat; /* 不重複平鋪 */
   	height: 100vh;                /* 高度設為螢幕視窗高度 */
 	height: 200px;
-  	line-height: 100px;  /* 行高設成跟高度一樣 */
+  	line-height: 30px;  /* 行高設成跟高度一樣 */
   	text-align: center;  /* 水平置中 */
 }
 

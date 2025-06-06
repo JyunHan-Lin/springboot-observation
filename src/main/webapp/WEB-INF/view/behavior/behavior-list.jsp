@@ -2,14 +2,17 @@
 	pageEncoding="UTF-8"%>
 <!-- Spring Form 表單標籤 -->
 <%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="/css/basic.css">
-		<link rel="stylesheet" href="/css/layout.css">
-		<link rel="stylesheet" href="/css/discuss.css">
-		<title>🐣 Bird Behavior Document</title>
+		<link rel="stylesheet" href="/css/common.css">
+		<link rel="stylesheet" href="/css/behavior-list.css">
+		<title>Bird Behavior Document</title>
+		<link rel="icon" type="image/png" href="/images/icon.png">
 	</head>
 	<body class="fontstyle">
 		<!-- menu bar include -->
@@ -30,6 +33,8 @@
 							<th>濕度</th>
 							<th>備註</th>
 							<th>記錄日期</th>
+							<th>編輯</th>
+							<th>刪除</th>
 						</tr>
 					</thead>
 					<tbody>

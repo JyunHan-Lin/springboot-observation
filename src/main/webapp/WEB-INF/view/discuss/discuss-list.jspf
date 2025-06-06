@@ -2,9 +2,7 @@
     pageEncoding="UTF-8"%>
 <!-- Jakarta JSTL 表單標籤 -->
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
-<link rel="stylesheet" href="/css/basic.css">
-<link rel="stylesheet" href="/css/layout.css">
+
 <div class="video-list-container">
 	<fieldset>
 	<legend>已建立的討論串列表</legend>

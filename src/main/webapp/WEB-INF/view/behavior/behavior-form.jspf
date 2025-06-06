@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
 <!-- Spring Form 表單標籤 -->
 <%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form" %>
-<link rel="stylesheet" href="/css/basic.css">
-<link rel="stylesheet" href="/css/layout.css">
+
 <div class="right-section">
    	<h3 class="form-title">行為紀錄</h3>
 

@@ -5,9 +5,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="/css/basic.css">
-		<link rel="stylesheet" href="/css/layout.css">
+		<link rel="stylesheet" href="/css/common.css">
 		<link rel="stylesheet" href="/css/discuss.css">
-		<title>🐣 Bird Behavior Document</title>
+		<title>Bird Behavior Document</title>
+		<link rel="icon" type="image/png" href="/images/icon.png">
 		<%@ include file="/WEB-INF/view/charts/googlecharts-head.jspf" %>	
 	</head>
 	<body class="fontstyle">
@@ -38,7 +39,6 @@
 		    			frameborder="0" allowfullscreen></iframe>
 		  
 		    	<!-- 留白區 -->
-		    	<a href="/bbd/discuss/stats/${discussDTO.discussId} }">產生圖表</a>
 		    	<div class="placeholder-box">
 	   				<%@ include file="/WEB-INF/view/charts/googlecharts-body.jspf" %>	
 		    	</div>

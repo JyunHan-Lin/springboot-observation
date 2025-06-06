@@ -53,8 +53,9 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	// 改密碼
-	public boolean changePassword(String email, String oldPassword, String newPassword, String confirmPassword) {
-        Optional<User> optUser = userRepository.findByEmail(email);
+	public boolean changePassword(String username, String oldPassword, String newPassword, String confirmPassword) {
+        Optional<User> optUser = userRepository.findByUsername(username);
+        System.out.println("使用者查詢結果: " + optUser.isPresent());
 
         if (optUser.isEmpty()) 
         	return false;
@@ -69,17 +70,19 @@ public class UserServiceImpl implements UserService {
 		
 		// 檢查新密碼是否與舊密碼重複
 		String confirmedPassword = HashUtil.getHash(newPassword, user.getSalt());
-        if (!confirmedPassword.equals(passwordHash)) {
+        if (confirmedPassword.equals(passwordHash)) {
     		throw new RuntimeException("新密碼不可與舊密碼重複");
         }
         // 檢查新密碼與確認是否相同
 		String checkedPassword = HashUtil.getHash(confirmPassword, user.getSalt());
         if (!checkedPassword.equals(confirmedPassword)) {
-			throw new RuntimeException("新密碼不可與舊密碼重複");
+			throw new RuntimeException("新密碼輸入錯誤");
         }
 
         user.setPasswordHash(checkedPassword);
         userRepository.save(user);
+        System.out.println("已儲存修改後密碼: " + user.getPasswordHash());
+
         return true;
 	}
 }

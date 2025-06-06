@@ -28,10 +28,10 @@ public class HomeController {
 	}
 	
 	// 密碼變更
-	@GetMapping("/codeedit")
-	public String codeEditPage() {
-		return "member";
-	}
+//	@GetMapping("/codeedit")
+//	public String codeEditPage() {
+//		return "member";
+//	}
 	
 	// 登出
 	@GetMapping("/logout")

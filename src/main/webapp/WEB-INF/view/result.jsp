@@ -4,7 +4,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>🐣 ${resultTitle}</title>
+		<link rel="icon" type="image/png" href="/images/icon.png">
+		<title>${resultTitle}</title>
 		<link rel="stylesheet" href="/css/basic.css">
 		<link rel="stylesheet" href="/css/layout.css">	
 	</head>

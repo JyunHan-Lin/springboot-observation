@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
 <!-- Spring Form 表單標籤 -->
 <%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form" %>
-<link rel="stylesheet" href="/css/basic.css">
-<link rel="stylesheet" href="/css/layout.css">
+
 <sp:form class="fontstyle" method="post" modelAttribute="discussDTO" action="/bbd/discuss/new" >
   <fieldset class="discussion-form">
     <legend class="title">建立討論串</legend>
