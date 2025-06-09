@@ -57,25 +57,26 @@ public class DiscussController {
 	}
 	
 	// 建立後的頁面
-	@GetMapping("/{id}")
-	public String viewReport(@PathVariable Integer id, Model model, HttpSession session) {
-	    DiscussDTO discussDTO = discussService.getDiscussById(id)
+	@GetMapping("/{discussId}")
+	public String viewReport(@PathVariable Integer discussId, Model model, HttpSession session) {
+	    DiscussDTO discussDTO = discussService.getDiscussById(discussId)
 	    									  .orElseThrow(() -> new RuntimeException("DiscussDTO not found"));
 	    model.addAttribute("discussDTO", discussDTO);
 	    
 	    UserCert userCert = (UserCert) session.getAttribute("userCert");
-	    Integer userId = userCert != null ? userCert.getUserId() : 1; // 預設 userId
+	    Integer userId = userCert != null ? userCert.getUserId() : 1; // 預設 userId (測試環境)
 
-	    List<BehaviorDTO> behaviors = behaviorService.getBehaviorsByDiscussAndUser(id, userId);
+	    List<BehaviorDTO> behaviors = behaviorService.getBehaviorsByDiscussAndUser(discussId, userId);
 
+	    // google charts
 	    Map<String, Long> actionCountBySubject 
 	    	= behaviors.stream()
-	        		   .collect(Collectors.groupingBy(
-	        				   BehaviorDTO::getSubject,
-	        				   Collectors.mapping(BehaviorDTO::getAction, Collectors.toSet())))
+	        		   .collect(Collectors.groupingBy(BehaviorDTO::getSubject,
+	        				    Collectors.mapping(BehaviorDTO::getAction, Collectors.toSet())))
 	        		   .entrySet().stream()
 	        		   .collect(Collectors.toMap(
 	        				   Map.Entry::getKey, e -> (long) e.getValue().size()));
+	    
 	    model.addAttribute("actionCountBySubject", actionCountBySubject);
 	    
 	    return "discuss/discuss"; // JSP頁面名稱

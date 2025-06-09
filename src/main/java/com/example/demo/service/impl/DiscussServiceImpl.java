@@ -35,14 +35,14 @@ public class DiscussServiceImpl implements DiscussService{
 	    if (discussDTO.getUserId() != null) {
 	        User user = userRepository.findById(discussDTO.getUserId())
 	                                  .orElseThrow(() -> new RuntimeException("User not found"));
-	        discuss.setUser(user);
+	        discuss.setUser(user);  // user 名下建立討論串
 	    }
 	    
 	    Discuss savedDiscuss = discussRepository.save(discuss); // 存進 DB
 	    return discussMapper.toDTO(savedDiscuss); // 存完再轉成 DTO 回傳
 	}
 
-	// 查看所有討論串
+	// 查看所有討論串 (搜尋欄?)
 	@Override
 	public List<DiscussDTO> getAllDiscuss() {
 	    List<Discuss> discusses = discussRepository.findAll();
@@ -51,13 +51,13 @@ public class DiscussServiceImpl implements DiscussService{
 	            		.toList();
 	}
 	
-	// 用討論串 ID 查詢單筆討論串
+	// 用討論串 ID 查詢單筆討論串 (討論串因為只顯示使用者自己的, 編輯及刪除就不考慮user)
 	public Optional<DiscussDTO> getDiscussById(Integer discussId) {
 	    return discussRepository.findById(discussId)
 	                            .map(discussMapper::toDTO);
 	}
 	
-	// 用使用者 ID 查詢該使用者的所有討論串
+	// 用使用者 ID 查詢該使用者的所有討論串 (只顯示使用者自己建立的討論串, 用在首頁清單上)
 	@Override
 	public List<DiscussDTO> getDiscussByUserId(Integer userId) {
 	    List<Discuss> discusses = discussRepository.findByUser_UserId(userId);
@@ -70,10 +70,10 @@ public class DiscussServiceImpl implements DiscussService{
 	// 編輯討論串
 	@Override
 	public void updateDiscuss(Integer discussId, DiscussDTO discussDTO) {
-		// 判斷該房號是否已存在?
+		// 判斷該討論串是否已存在?
 		Optional<Discuss> optDiscuss = discussRepository.findById(discussId);
 		if (optDiscuss.isEmpty()) {
-			throw new RuntimeException("修改失敗: 房號" + discussDTO.getDiscussId() + "不存在");
+			throw new RuntimeException("修改失敗: 討論串" + discussId + "不存在");
 		}
 	    Discuss original = optDiscuss.get(); // 原本的 Discuss 實體
 
@@ -98,7 +98,7 @@ public class DiscussServiceImpl implements DiscussService{
 		// 判斷該房號是否已存在?
 		Optional<Discuss> optDiscuss = discussRepository.findById(discussId);
 		if (optDiscuss.isEmpty()) {
-			throw new RuntimeException("刪除失敗: 房號" + discussId + "不存在");
+			throw new RuntimeException("刪除失敗: 討論串" + discussId + "不存在");
 		}
 		discussRepository.deleteById(discussId);
 	}
