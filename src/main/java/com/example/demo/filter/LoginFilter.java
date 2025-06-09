@@ -18,8 +18,9 @@ public class LoginFilter extends HttpFilter {
 			throws IOException, ServletException {
 		// 檢查 session 中是否有 userCert
 		HttpSession session = request.getSession();
-		if (session.getAttribute("userCert") == null) { // 沒有憑證
-			response.sendRedirect("/login"); // 重導到登入頁面
+		
+		if (session.getAttribute("userCert") == null) { // 沒有憑證(userCert)
+			response.sendRedirect("/login"); // 就重導到登入頁面
 			return;
 		}
 		chain.doFilter(request, response);

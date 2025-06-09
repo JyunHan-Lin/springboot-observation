@@ -62,35 +62,25 @@ public class DiscussController {
 	    DiscussDTO discussDTO = discussService.getDiscussById(id)
 	    									  .orElseThrow(() -> new RuntimeException("DiscussDTO not found"));
 	    model.addAttribute("discussDTO", discussDTO);
-//	    model.addAttribute("actionRecord", new ActionRecord()); // 新增行為紀錄用的物件
 	    
 	    UserCert userCert = (UserCert) session.getAttribute("userCert");
 	    Integer userId = userCert != null ? userCert.getUserId() : 1; // 預設 userId
 
 	    List<BehaviorDTO> behaviors = behaviorService.getBehaviorsByDiscussAndUser(id, userId);
 
-	    Map<String, Long> actionCountBySubject = behaviors.stream()
-	        .collect(Collectors.groupingBy(
-	            BehaviorDTO::getSubject,
-	            Collectors.mapping(BehaviorDTO::getAction, Collectors.toSet())))
-	        .entrySet().stream()
-	        .collect(Collectors.toMap(
-	            Map.Entry::getKey,
-	            e -> (long) e.getValue().size()));
-
+	    Map<String, Long> actionCountBySubject 
+	    	= behaviors.stream()
+	        		   .collect(Collectors.groupingBy(
+	        				   BehaviorDTO::getSubject,
+	        				   Collectors.mapping(BehaviorDTO::getAction, Collectors.toSet())))
+	        		   .entrySet().stream()
+	        		   .collect(Collectors.toMap(
+	        				   Map.Entry::getKey, e -> (long) e.getValue().size()));
 	    model.addAttribute("actionCountBySubject", actionCountBySubject);
 	    
 	    return "discuss/discuss"; // JSP頁面名稱
 	}
 	
-	@PostMapping("/{id}")
-	public String addActionRecord(@PathVariable Integer id,
-	                              @RequestParam String actionType,
-	                              @RequestParam(required = false) String description) {
-	    // 呼叫Service新增行為紀錄，並關聯到討論id
-//	    actionRecordService.addActionRecord(id, actionType, description);
-	    return "redirect:/bbd/discuss/" + id;
-	}
 	
 	// 編輯討論串(標題、描述、網址: 點選到裡面再編輯) 
 	@GetMapping("/update/{discussId}")
@@ -103,18 +93,13 @@ public class DiscussController {
 
 	@PutMapping("/update/{discussId}")
 	public String updateRoom(@PathVariable Integer discussId, @Valid DiscussDTO discussDTO, BindingResult bindingResult) {
-		// 驗證資料
-//		if (bindingResult.hasErrors()) { // 若驗證時有錯誤發生
-//			return "discuss/discuss-edit";
-//		}
-		
 		// 進行修改
 		discussService.updateDiscuss(discussId, discussDTO);
 		return "redirect:/bbd/discuss/" + discussId;
 	}
 
 	
-	// 刪除
+	// 刪除討論串
 	@DeleteMapping("/delete/{discussId}")
 	public String deleteRoom(@PathVariable Integer discussId) {
 		discussService.deleteDiscuss(discussId);

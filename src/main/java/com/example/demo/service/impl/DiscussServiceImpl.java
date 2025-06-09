@@ -31,7 +31,6 @@ public class DiscussServiceImpl implements DiscussService{
 	@Override
 	public DiscussDTO createDiscuss(DiscussDTO discussDTO) {
 	    Discuss discuss = discussMapper.toEntity(discussDTO); // 將 DTO 轉成 Entity
-	    System.out.println("discussDTO.getUserId() = " + discussDTO.getUserId());
 
 	    if (discussDTO.getUserId() != null) {
 	        User user = userRepository.findById(discussDTO.getUserId())
@@ -67,6 +66,7 @@ public class DiscussServiceImpl implements DiscussService{
                 		.toList();
 	}
 	
+	
 	// 編輯討論串
 	@Override
 	public void updateDiscuss(Integer discussId, DiscussDTO discussDTO) {
@@ -91,6 +91,8 @@ public class DiscussServiceImpl implements DiscussService{
 		updateDiscuss(discussId, discussDTO);		
 	}
 
+	
+	// 刪除討論串
 	@Override
 	public void deleteDiscuss(Integer discussId) {
 		// 判斷該房號是否已存在?

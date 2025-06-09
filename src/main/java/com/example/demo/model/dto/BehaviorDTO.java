@@ -17,8 +17,8 @@ public class BehaviorDTO {
     private LocalTime endTime;
     private String subject;
     private String action;
-    private Integer temperature;
-    private Integer humidity;
+    private Float temperature;
+    private Float humidity;
     private String note;
 	private LocalDateTime createdTime = LocalDateTime.now();
 	private Integer discussId;

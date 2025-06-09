@@ -19,8 +19,8 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	@Autowired
-	private UserMapper userMapper;
+//	@Autowired
+//	private UserMapper userMapper;  --> 搜尋功能?
 
 	// 註冊
 	// 參數待改 ?
@@ -30,35 +30,39 @@ public class UserServiceImpl implements UserService {
 	    if (userRepository.existsByUsername(username)) {
 	    	throw new RuntimeException("使用者已經註冊過了");
 	    }
+	    // 加鹽
 		String salt = HashUtil.getSalt();
+		// 加鹽加密
 		String passwordHash = HashUtil.getHash(password, salt);
+		// 建立user物件
 		User user = new User(null, username, passwordHash, salt, email, active, role, null);
+		// 儲存到資料庫
 		userRepository.save(user);
 		System.out.println("使用者註冊成功");
 		
 	}
 	
-	// email
+	// email認證
 	public boolean confirmEmail(String username) {
 	    Optional<User> optUser = userRepository.findByUsername(username);
+	    
 	    if (optUser.isPresent()) {
 	        User user = optUser.get();
-	        // 假設 User 類別有一個表示認證狀態的欄位，例如 emailConfirmed
-	        user.setActive(true);  // 將認證狀態設為 true
+	        // 假設 User 類別有一個表示認證狀態的欄位，例如 active
+	        user.setActive(true);  // 將認證狀態設為 true (已認證)
 	        userRepository.save(user); // 儲存更新後的使用者
-	        return true;
+	        return true; // 成功
 	    } else {
-	        return false;
+	        return false; // 失敗
 	    }
 	}
 	
-	// 改密碼
+	// 變更密碼
 	public boolean changePassword(String username, String oldPassword, String newPassword, String confirmPassword) {
         Optional<User> optUser = userRepository.findByUsername(username);
-        System.out.println("使用者查詢結果: " + optUser.isPresent());
-
+        
         if (optUser.isEmpty()) 
-        	return false;
+        	return false; // 找不到使用者
 
         User user = optUser.get();
 

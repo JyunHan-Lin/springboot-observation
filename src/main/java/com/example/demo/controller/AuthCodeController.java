@@ -27,10 +27,6 @@ public class AuthCodeController {
 	    session.setAttribute("authcode", authcode);
 	    // 設定回應類型為圖片
 	    response.setContentType("image/jpeg");
-	    // 禁止快取
-//	    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-//	    response.setHeader("Pragma", "no-cache");
-//	    response.setDateHeader("Expires", 0);
 
 	    // 產生圖片
 	    BufferedImage image = getAuthCodeImage(authcode);
@@ -41,23 +37,23 @@ public class AuthCodeController {
  	// 利用 Java2D 產生動態圖像
  	private BufferedImage getAuthCodeImage(String authcode) {
  		// 建立圖像區域(80x30 TGB)
- 		BufferedImage img = new BufferedImage(80, 30, BufferedImage.TYPE_INT_RGB);
+ 		BufferedImage img = new BufferedImage(100, 36, BufferedImage.TYPE_INT_RGB);
  		// 建立畫布
  		Graphics g = img.getGraphics();
  		// 設定顏色
  		g.setColor(Color.WHITE);
  		// 塗滿背景
- 		g.fillRect(0, 0, 80, 30); // 全區域
+ 		g.fillRect(0, 0, 100, 36); // 全區域 (寬高同上)
  		// 設定顏色
  		g.setColor(Color.BLACK);
  		// 設定字型
- 		g.setFont(new Font("Segoe UI Emoji", Font.BOLD, 22)); // 字體, 風格, 大小
+ 		g.setFont(new Font("Segoe UI Emoji", Font.BOLD, 24)); // 字體, 風格, 大小
  		// 繪文字
- 		g.drawString(authcode, 18, 22); // (18, 22) 表示繪文字左上角的起點
+ 		g.drawString(authcode, 25, 28); // (25, 28) 表示繪文字左上角的起點
  		// 加上干擾線
  		g.setColor(Color.RED);
  		Random random = new Random();
- 		for(int i=0;i<15;i++) {
+ 		for(int i=0;i<18;i++) {
  			// 座標點
  			int x1 = random.nextInt(80); // 0~79
  			int y1 = random.nextInt(30); // 0~29

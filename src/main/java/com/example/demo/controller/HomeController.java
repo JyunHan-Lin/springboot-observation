@@ -27,12 +27,6 @@ public class HomeController {
 		return "main";
 	}
 	
-	// 密碼變更
-//	@GetMapping("/codeedit")
-//	public String codeEditPage() {
-//		return "member";
-//	}
-	
 	// 登出
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {

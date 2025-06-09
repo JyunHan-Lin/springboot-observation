@@ -13,10 +13,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+Entity name: User
+Table name: users
++---------+-----------+---------------+------+-------+--------+------+
+| user_id | username  | password_hash | salt | email | active | role |
++---------+-----------+---------------+------+-------+--------+------+
+|   1     |  john     |   Qwd1234...  | $ED..| A@com |  true  | admin|
+|   2     |  mary     |   Qwd5678...  | $AW..| B@com |  false | user |
++---------+-----------+---------------+------+-------+--------+------+
+*/
+
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @Table(name = "users")
 public class User {
 	@Id
@@ -42,7 +53,7 @@ public class User {
 	@Column(name = "role")  
 	private String role;
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user")	// 一對多 (Discuss)
 	private List<Discuss> discusses;
 
 }

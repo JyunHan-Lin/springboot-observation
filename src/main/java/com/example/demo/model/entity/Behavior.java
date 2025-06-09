@@ -10,14 +10,27 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+/**
+Entity name: Behavior
+Table name: behavior
++-------------+-------+------------+----------+---------+--------+-------------+----------+------+--------------+
+| behavior_id | date  | start_time | end_time | subject | action | temperature | humidity | note | created_time |
++-------------+-------+------------+----------+---------+--------+-------------+----------+------+--------------+
+|      1      |       |   ........ | .....    | .....   |  ....  |    ......   |  .....   | .... |    ........  | 
+|      2      |       |   .......  | .....    | .....   |  ....  |    ......   |  .....   | .... |    ........  |
++-------------+-------+------------+----------+---------+--------+-------------+----------+------+--------------+
+*/
+
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "behavior")
 public class Behavior {
 	
 	@Id
@@ -41,10 +54,10 @@ public class Behavior {
     private String action;
 	
 	@Column(name = "temperature")
-    private Integer temperature;
+    private Float temperature;
 	
 	@Column(name = "humidity")
-    private Integer humidity;
+    private Float humidity;
 	
 	@Column(name = "note", length = 100)
     private String note;
