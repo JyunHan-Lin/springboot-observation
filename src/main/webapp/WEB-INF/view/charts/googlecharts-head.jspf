@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- Spring Form 表單標籤 -->
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!-- Spring Form 表單標籤、c: forEach, if | fn: function -->
+<%@ taglib prefix="c" uri="jakarta.tags.core" %> 
 <%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
-<%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form" %>
 
-<!--Load the AJAX API-->
+<!-- 從 Google 的 CDN 載入 Google Charts 套件-->
    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
    <script>
-	  // 將 Java Map 轉成 JS 物件陣列（用 JSTL 或 Expression Language）
+	  // 將 Java Map (後端資料)轉成 JS 物件陣列（用 JSTL 或 Expression Language）
 	  var actionCountBySubject = [
 	    <c:forEach var="entry" items="${actionCountBySubject}" varStatus="status">
 	      ['${fn:escapeXml(entry.key)}', ${entry.value}]<c:if test="${!status.last}">,</c:if>
@@ -42,6 +41,9 @@
    	    height: 200,
    	    hAxis: { title: '對象' },
    	    vAxis: { title: '行為種類數' }
+   	  	legend: { position: 'none' },
+   	  	chartArea: { width: '70%', height: '70%' },
+   	  	colors: ['#3366cc']
    	  };
 
    	  var chart = new google.visualization.BarChart(document.getElementById('actioncount_chart_div'));

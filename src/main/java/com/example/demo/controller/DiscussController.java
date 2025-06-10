@@ -35,9 +35,6 @@ public class DiscussController {
 	@Autowired
 	private DiscussService discussService;
 	
-	@Autowired
-	private BehaviorService behaviorService;
-	
 	// 建立討論串的頁面
 	@GetMapping("/new")
 	public String createDiscuss(Model model) {
@@ -56,33 +53,6 @@ public class DiscussController {
 	    return "redirect:/bbd/discuss/" + savedDiscuss.getDiscussId();
 	}
 	
-	// 建立後的頁面
-	@GetMapping("/{discussId}")
-	public String viewReport(@PathVariable Integer discussId, Model model, HttpSession session) {
-	    DiscussDTO discussDTO = discussService.getDiscussById(discussId)
-	    									  .orElseThrow(() -> new RuntimeException("DiscussDTO not found"));
-	    model.addAttribute("discussDTO", discussDTO);
-	    
-	    UserCert userCert = (UserCert) session.getAttribute("userCert");
-	    Integer userId = userCert != null ? userCert.getUserId() : 1; // 預設 userId (測試環境)
-
-	    List<BehaviorDTO> behaviors = behaviorService.getBehaviorsByDiscussAndUser(discussId, userId);
-
-	    // google charts
-	    Map<String, Long> actionCountBySubject 
-	    	= behaviors.stream()
-	        		   .collect(Collectors.groupingBy(BehaviorDTO::getSubject,
-	        				    Collectors.mapping(BehaviorDTO::getAction, Collectors.toSet())))
-	        		   .entrySet().stream()
-	        		   .collect(Collectors.toMap(
-	        				   Map.Entry::getKey, e -> (long) e.getValue().size()));
-	    
-	    model.addAttribute("actionCountBySubject", actionCountBySubject);
-	    
-	    return "discuss/discuss"; // JSP頁面名稱
-	}
-	
-	
 	// 編輯討論串(標題、描述、網址: 點選到裡面再編輯) 
 	@GetMapping("/update/{discussId}")
 	public String showEditDiscuss(@PathVariable Integer discussId, Model model) {
@@ -93,17 +63,21 @@ public class DiscussController {
 	}
 
 	@PutMapping("/update/{discussId}")
-	public String updateRoom(@PathVariable Integer discussId, @Valid DiscussDTO discussDTO, BindingResult bindingResult) {
+	public String updateRoom(@PathVariable Integer discussId, @Valid DiscussDTO discussDTO, BindingResult bindingResult, HttpSession session) {
+	    UserCert userCert = (UserCert) session.getAttribute("userCert");
+	    Integer userId = userCert.getUserId();
 		// 進行修改
-		discussService.updateDiscuss(discussId, discussDTO);
+		discussService.updateDiscuss(discussId, userId, discussDTO);
 		return "redirect:/bbd/discuss/" + discussId;
 	}
 
 	
 	// 刪除討論串
 	@DeleteMapping("/delete/{discussId}")
-	public String deleteRoom(@PathVariable Integer discussId) {
-		discussService.deleteDiscuss(discussId);
+	public String deleteRoom(@PathVariable Integer discussId,  DiscussDTO discussDTO, HttpSession session) {
+	    UserCert userCert = (UserCert) session.getAttribute("userCert");
+	    Integer userId = userCert.getUserId();
+		discussService.deleteDiscuss(discussId, userId, discussDTO);
 		return "redirect:/bbd"; // 重導到首頁
 	}
 	

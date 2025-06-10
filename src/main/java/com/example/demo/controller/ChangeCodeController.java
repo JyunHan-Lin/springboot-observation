@@ -38,10 +38,10 @@ public class ChangeCodeController {
         
         // 執行修改
         boolean result = userService.changePassword(username, oldPassword, newPassword, confirmPassword);
-        System.out.println(username);
-        System.out.println(oldPassword);
-        System.out.println(newPassword);
-        System.out.println(confirmPassword);
+//        System.out.println(username);		測試用
+//        System.out.println(oldPassword);	測試用
+//        System.out.println(newPassword);	測試用
+//        System.out.println(confirmPassword);	測試用
 
         if (result) {
             redirectAttributes.addFlashAttribute("successMessage", "密碼變更成功！");

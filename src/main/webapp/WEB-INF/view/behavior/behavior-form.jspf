@@ -34,15 +34,10 @@
 				<option value="其他">其他</option>
      		</select>
 
-		<!-- 溫度與濕度欄位在同一行 -->
 		<div class="form-row">
 		  <div class="form-group">
 		    <label>溫度：</label>
 		    <input type="text" name="temperature" placeholder="℃" />
-		  </div>
-		  <div class="form-group">
-		    <label>濕度：</label>
-		    <input type="text" name="humidity" placeholder="%" />
 		  </div>
 		</div>
 

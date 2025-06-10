@@ -12,7 +12,7 @@ public interface DiscussService {
 	public List<DiscussDTO>getAllDiscuss();
 	public Optional<DiscussDTO> getDiscussById(Integer discussId);
 	public List<DiscussDTO> getDiscussByUserId(Integer id);
-	public void updateDiscuss(Integer discussId, DiscussDTO discussDTO);
-	public void updateDiscuss(Integer discussId, String title, String description, String youtubeVideoId, LocalDateTime createdTime, Integer userId);
-	public void deleteDiscuss(Integer discussId);
+	public void updateDiscuss(Integer discussId, Integer userId, DiscussDTO discussDTO);
+	public void updateDiscuss(Integer discussId, Integer userId, String title, String description, String youtubeVideoId, LocalDateTime createdTime);
+	public void deleteDiscuss(Integer discussId, Integer userId, DiscussDTO discussDTO);
 }

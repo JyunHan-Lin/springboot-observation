@@ -13,6 +13,6 @@ public interface BehaviorService {
 	public List<BehaviorDTO> getBehaviorsByDiscussAndUser(Integer discussId, Integer userId);
 	public Optional<BehaviorDTO> getBehaviorById(Integer behaviorId);
 	public void updateBehavior(Integer behaviorId, BehaviorDTO behaviorDTO);
-	public void updateBehavior(Integer behaviorId, LocalDate date, LocalTime startTime, LocalTime endTime, String subject, String action, Float temperature, Float humidity, String note);
+	public void updateBehavior(Integer behaviorId, LocalDate date, LocalTime startTime, LocalTime endTime, String subject, String action, Float temperature, String note);
 	public void deleteBehavior(Integer behaviorId);
 }

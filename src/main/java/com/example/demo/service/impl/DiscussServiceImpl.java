@@ -7,6 +7,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.exception.DiscussCreateException;
+import com.example.demo.exception.DiscussNotFoundException;
+import com.example.demo.exception.UserNotFoundException;
 import com.example.demo.mapper.DiscussMapper;
 import com.example.demo.model.dto.DiscussDTO;
 import com.example.demo.model.entity.Discuss;
@@ -34,7 +37,7 @@ public class DiscussServiceImpl implements DiscussService{
 
 	    if (discussDTO.getUserId() != null) {
 	        User user = userRepository.findById(discussDTO.getUserId())
-	                                  .orElseThrow(() -> new RuntimeException("User not found"));
+	                                  .orElseThrow(() -> new UserNotFoundException("找不到使用者"));
 	        discuss.setUser(user);  // user 名下建立討論串
 	    }
 	    
@@ -69,12 +72,17 @@ public class DiscussServiceImpl implements DiscussService{
 	
 	// 編輯討論串
 	@Override
-	public void updateDiscuss(Integer discussId, DiscussDTO discussDTO) {
+	public void updateDiscuss(Integer discussId, Integer userId, DiscussDTO discussDTO) {
 		// 判斷該討論串是否已存在?
 		Optional<Discuss> optDiscuss = discussRepository.findById(discussId);
 		if (optDiscuss.isEmpty()) {
-			throw new RuntimeException("修改失敗: 討論串" + discussId + "不存在");
+			throw new DiscussNotFoundException("修改失敗: 討論串" + discussId + "不存在");
 		}
+		// 判斷是否是討論串建立者
+		if (!userId.equals(discussDTO.getUserId())) {
+			throw new DiscussCreateException("修改失敗: " + userId + "不是建立者");
+		}
+		
 	    Discuss original = optDiscuss.get(); // 原本的 Discuss 實體
 
 	    // 更新可編輯欄位（不要動 user）
@@ -86,19 +94,24 @@ public class DiscussServiceImpl implements DiscussService{
 	}
 
 	@Override
-	public void updateDiscuss(Integer discussId, String title, String description, String youtubeVideoId, LocalDateTime createdTime, Integer userId) {
+	public void updateDiscuss(Integer discussId, Integer userId, String title, String description, String youtubeVideoId, LocalDateTime createdTime) {
 		DiscussDTO discussDTO = new DiscussDTO(discussId, title, description, youtubeVideoId, createdTime, userId);
-		updateDiscuss(discussId, discussDTO);		
+		updateDiscuss(discussId, userId, discussDTO);		
 	}
 
 	
 	// 刪除討論串
 	@Override
-	public void deleteDiscuss(Integer discussId) {
-		// 判斷該房號是否已存在?
+	public void deleteDiscuss(Integer discussId, Integer userId, DiscussDTO discussDTO) {
 		Optional<Discuss> optDiscuss = discussRepository.findById(discussId);
+
+		// 判斷該討論串是否已存在?
 		if (optDiscuss.isEmpty()) {
-			throw new RuntimeException("刪除失敗: 討論串" + discussId + "不存在");
+			throw new DiscussNotFoundException("刪除失敗: 討論串" + discussId + "不存在");
+		}
+		// 判斷是否是討論串建立者
+		if (!userId.equals(discussDTO.getUserId())) {
+			throw new DiscussCreateException("刪除失敗: " + userId + "不是建立者");
 		}
 		discussRepository.deleteById(discussId);
 	}

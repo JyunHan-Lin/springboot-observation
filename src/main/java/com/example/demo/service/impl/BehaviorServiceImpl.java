@@ -9,6 +9,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.exception.BehaviorNotFoundException;
 import com.example.demo.mapper.BehaviorMapper;
 import com.example.demo.model.dto.BehaviorDTO;
 import com.example.demo.model.dto.DiscussDTO;
@@ -32,6 +33,7 @@ public class BehaviorServiceImpl implements BehaviorService{
 	@Autowired
 	private BehaviorMapper behaviorMapper;
 	
+	// 新增行為
 	@Override
     public void saveBehavior(Integer discussId, Integer userId, BehaviorDTO behaviorDTO) {
         Optional<Discuss> discussOpt = discussRepository.findById(discussId);
@@ -46,23 +48,17 @@ public class BehaviorServiceImpl implements BehaviorService{
         behavior.setAction(behaviorDTO.getAction());
         
         behavior.setTemperature(behaviorDTO.getTemperature());
-        behavior.setHumidity(behaviorDTO.getHumidity());
         behavior.setNote(behaviorDTO.getNote());
 
         behavior.setDiscuss(discuss); // 關聯討論串
-        behavior.setUser(discuss.getUser());
+        behavior.setUser(discuss.getUser()); // 連接user (只看得到自己建立的行為)
         
         behaviorRepository.save(behavior);
         }
     }
     
+	// 查詢userId、disscussId 建立的行為(只看得到自己建立的行為)
 	@Override
-//	public List<BehaviorDTO> getAllBehavior() {
-//	    List<Behavior> behaviors = behaviorRepository.findAll();
-//	    return behaviors.stream()
-//	            		.map(behaviorMapper::toDTO)
-//	            		.toList();
-//	}
 	public List<BehaviorDTO> getBehaviorsByDiscussAndUser(Integer discussId, Integer userId) {
         return behaviorRepository.findByDiscussIdAndUserId(discussId, userId)
                                  .stream()
@@ -82,7 +78,7 @@ public class BehaviorServiceImpl implements BehaviorService{
 		// 判斷該房號是否已存在?
 		Optional<Behavior> optBehavior = behaviorRepository.findById(behaviorId);
 		if (optBehavior.isEmpty()) {
-			throw new RuntimeException("修改失敗: 行為" + behaviorDTO.getBehaviorId() + "不存在");
+			throw new BehaviorNotFoundException("修改失敗: 行為" + behaviorDTO.getBehaviorId() + "不存在");
 		}
 		Behavior original = optBehavior.get(); // 原本的 Discuss 實體
 
@@ -93,15 +89,14 @@ public class BehaviorServiceImpl implements BehaviorService{
 	    original.setSubject(behaviorDTO.getSubject());
 	    original.setAction(behaviorDTO.getAction());
 	    original.setTemperature(behaviorDTO.getTemperature());	    
-	    original.setHumidity(behaviorDTO.getHumidity());
 	    original.setNote(behaviorDTO.getNote());
 
 	    behaviorRepository.saveAndFlush(original);
 	}
 
 	@Override
-	public void updateBehavior(Integer behaviorId, LocalDate date, LocalTime startTime, LocalTime endTime, String subject, String action, Float temperature, Float humidity, String note) {
-		BehaviorDTO behaviorDTO = new BehaviorDTO(behaviorId, date, startTime, endTime, subject, action, temperature, humidity, note, null, null);
+	public void updateBehavior(Integer behaviorId, LocalDate date, LocalTime startTime, LocalTime endTime, String subject, String action, Float temperature, String note) {
+		BehaviorDTO behaviorDTO = new BehaviorDTO(behaviorId, date, startTime, endTime, subject, action, temperature, note, null, null);
 		updateBehavior(behaviorId, behaviorDTO);		
 	}
 
@@ -110,7 +105,7 @@ public class BehaviorServiceImpl implements BehaviorService{
 		// 判斷該行為是否已存在?
 		Optional<Behavior> optBehavior = behaviorRepository.findById(behaviorId);
 		if (optBehavior.isEmpty()) {
-			throw new RuntimeException("刪除失敗: 房號" + behaviorId + "不存在");
+			throw new BehaviorNotFoundException("刪除失敗: 行為" + behaviorId + "不存在");
 		}
 		behaviorRepository.deleteById(behaviorId);
 	}

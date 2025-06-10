@@ -9,48 +9,56 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.model.dto.BehaviorDTO;
 import com.example.demo.model.dto.DiscussDTO;
-import com.example.demo.model.entity.Behavior;
+import com.example.demo.model.dto.UserCert;
 import com.example.demo.service.BehaviorService;
+import com.example.demo.service.DiscussService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/bbd/discuss/stats")
+@RequestMapping("/bbd/discuss")
 public class ChartsController {
+
+	@Autowired
+	private DiscussService discussService;
+	
 	@Autowired
 	private BehaviorService behaviorService;
 	
-	@GetMapping("/{discussId}")
-	public String showCharts(
-	    @PathVariable Integer discussId,
-	    @RequestParam(required = false) Integer userId, // 可從 URL 參數取得 userId
-	    Model model) {
-		System.out.println("Controller 方法被呼叫");
+	// 建立後的頁面
+		@GetMapping("/{discussId}")
+		public String viewReport(@PathVariable Integer discussId, Model model, HttpSession session) {
+		    DiscussDTO discussDTO = discussService.getDiscussById(discussId)
+		    									  .orElseThrow(() -> new RuntimeException("DiscussDTO not found"));
+		    // 取出登入者
+		    UserCert userCert = (UserCert) session.getAttribute("userCert");
+		    Integer userId = userCert != null ? userCert.getUserId() : null; // 預設 userId (測試環境)
+		    
+		    // 安全驗證：只允許建立者瀏覽
+		    if (!userId.equals(discussDTO.getUserId())) {
+		    	throw new RuntimeException("並非討論串建立者無法檢視討論串");
+		    }
+		    
+		    model.addAttribute("discussDTO", discussDTO);
 
-	    // 若 userId 為 null，給預設值或跳轉提示
-	    if(userId == null) {
-	        userId = 1; // 或其他預設 userId
-	    }
+		    // 行為資料
+		    List<BehaviorDTO> behaviors = behaviorService.getBehaviorsByDiscussAndUser(discussId, userId);
 
-	    List<BehaviorDTO> behaviors = behaviorService.getBehaviorsByDiscussAndUser(discussId, userId);
-
-	    Map<String, Long> actionCountBySubject = behaviors.stream()
-													      .collect(Collectors.groupingBy(
-													       BehaviorDTO::getSubject,
-													       Collectors.mapping(BehaviorDTO::getAction, Collectors.toSet())))
-													      .entrySet().stream()
-													      .collect(Collectors.toMap(
-													       Map.Entry::getKey,
-													       e -> (long) e.getValue().size()));
-
-	    model.addAttribute("actionCountBySubject", actionCountBySubject);
-	    System.out.println("actionCountBySubject: " + actionCountBySubject);
-	    return "charts/googlecharts-head.jspf";
-	}
-
-
+		    // google charts
+		    Map<String, Long> actionCountBySubject 
+		    	= behaviors.stream()
+		        		   .collect(Collectors.groupingBy(BehaviorDTO::getSubject,
+		        				    Collectors.mapping(BehaviorDTO::getAction, Collectors.toSet())))
+		        		   .entrySet().stream()
+		        		   .collect(Collectors.toMap(
+		        				   Map.Entry::getKey, e -> (long) e.getValue().size()));
+		    
+		    model.addAttribute("actionCountBySubject", actionCountBySubject);
+		    
+		    return "discuss/discuss"; // JSP頁面名稱
+		}
 }

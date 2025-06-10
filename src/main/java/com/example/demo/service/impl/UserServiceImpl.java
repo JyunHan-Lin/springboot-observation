@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.exception.PasswordInvalidException;
+import com.example.demo.exception.UserAlreadyExistException;
+import com.example.demo.exception.UserNotFoundException;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.model.dto.UserDTO;
 import com.example.demo.model.entity.User;
@@ -25,10 +27,10 @@ public class UserServiceImpl implements UserService {
 	// 註冊
 	// 參數待改 ?
 	@Override
-	public void addUser(String username, String password, String email, Boolean active, String role) {
+	public void addUser(String username, String password, String email, Boolean active, String role){
 	    // 判斷使用者是否已存在
 	    if (userRepository.existsByUsername(username)) {
-	    	throw new RuntimeException("使用者已經註冊過了");
+	    	throw new UserAlreadyExistException("使用者註冊過了");
 	    }
 	    // 加鹽
 		String salt = HashUtil.getSalt();
@@ -60,33 +62,30 @@ public class UserServiceImpl implements UserService {
 	// 變更密碼
 	public boolean changePassword(String username, String oldPassword, String newPassword, String confirmPassword) {
         Optional<User> optUser = userRepository.findByUsername(username);
-        
         if (optUser.isEmpty()) 
         	return false; // 找不到使用者
 
         User user = optUser.get();
-
         // 檢查舊密碼是否正確
         String passwordHash = HashUtil.getHash(oldPassword, user.getSalt());
 		if(!passwordHash.equals(user.getPasswordHash())) {
-			throw new RuntimeException("原本密碼輸入錯誤");
+			throw new PasswordInvalidException("原本密碼輸入錯誤");
 		}
 		
 		// 檢查新密碼是否與舊密碼重複
 		String confirmedPassword = HashUtil.getHash(newPassword, user.getSalt());
         if (confirmedPassword.equals(passwordHash)) {
-    		throw new RuntimeException("新密碼不可與舊密碼重複");
+    		throw new PasswordInvalidException("新密碼不可與舊密碼重複");
         }
+        
         // 檢查新密碼與確認是否相同
 		String checkedPassword = HashUtil.getHash(confirmPassword, user.getSalt());
         if (!checkedPassword.equals(confirmedPassword)) {
-			throw new RuntimeException("新密碼輸入錯誤");
+			throw new PasswordInvalidException("新密碼輸入錯誤");
         }
 
         user.setPasswordHash(checkedPassword);
         userRepository.save(user);
-        System.out.println("已儲存修改後密碼: " + user.getPasswordHash());
-
         return true;
 	}
 }

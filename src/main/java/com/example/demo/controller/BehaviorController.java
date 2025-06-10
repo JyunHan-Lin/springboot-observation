@@ -31,7 +31,7 @@ public class BehaviorController {
 	@Autowired
 	private BehaviorService behaviorService;
 	
-	
+	// 新增行為
 	@PostMapping("/{discussId}")
 	public String save(@PathVariable Integer discussId, BehaviorDTO behaviorDTO, HttpSession session) {
 	    Integer userId = (Integer) session.getAttribute("userId");
@@ -39,6 +39,7 @@ public class BehaviorController {
 		return "redirect:/bbd/discuss/" + discussId;
 	}
 	
+	// 顯示行為清單
 	@GetMapping("/{discussId}/list")
 	public String showDiscussList(@PathVariable Integer discussId, Model model, HttpSession session) {
 	    UserCert userCert = (UserCert) session.getAttribute("userCert");
@@ -51,32 +52,28 @@ public class BehaviorController {
 	}
 	
 	// 編輯討論串(標題、描述、網址: 點選到裡面再編輯) 
-		@GetMapping("/{discussId}/edit/{behaviorId}")
-		public String showEditBehavior(@PathVariable Integer behaviorId, @PathVariable Integer discussId,  Model model) {
-		    BehaviorDTO behaviorDTO = behaviorService.getBehaviorById(behaviorId)
-		    									     .orElseThrow(() -> new RuntimeException("not found"));
-		    model.addAttribute("behaviorDTO", behaviorDTO);
-		    model.addAttribute("discussId", behaviorDTO.getDiscussId());
-		    return "behavior/behavior-edit"; // 編輯頁面的 JSP 名稱
-		}
+	@GetMapping("/{discussId}/edit/{behaviorId}")
+	public String showEditBehavior(@PathVariable Integer behaviorId, @PathVariable Integer discussId,  Model model) {
+	    BehaviorDTO behaviorDTO = behaviorService.getBehaviorById(behaviorId)
+	    									     .orElseThrow(() -> new RuntimeException("not found"));
+	    model.addAttribute("behaviorDTO", behaviorDTO);
+	    model.addAttribute("discussId", behaviorDTO.getDiscussId());
+	    return "behavior/behavior-edit"; // 編輯頁面的 JSP 名稱
+	}
 
-		@PutMapping("/{discussId}/edit/{behaviorId}")
-		public String updateBehavior(@PathVariable Integer behaviorId, @PathVariable Integer discussId, @Valid BehaviorDTO behaviorDTO, DiscussDTO discussDTO, BindingResult bindingResult) {
-			// 驗證資料
-//			if (bindingResult.hasErrors()) { // 若驗證時有錯誤發生
-//				return "discuss/discuss-edit";
-//			}
-			// 進行修改
-			behaviorService.updateBehavior(behaviorId, behaviorDTO);
-			return "redirect:/bbd/discuss/behavior/" + discussId + "/list";
-		}
-		
-		// 刪除
-		@DeleteMapping("/{discussId}/delete/{behaviorId}")
-		public String deleteBehavior(@PathVariable Integer behaviorId, @PathVariable Integer discussId, BehaviorDTO behaviorDTO, DiscussDTO discussDTO) {
-			behaviorService.deleteBehavior(behaviorId);
-			return "redirect:/bbd/discuss/behavior/" + discussId + "/list"; 
-		}
+	@PutMapping("/{discussId}/edit/{behaviorId}")
+	public String updateBehavior(@PathVariable Integer behaviorId, @PathVariable Integer discussId, @Valid BehaviorDTO behaviorDTO, DiscussDTO discussDTO, BindingResult bindingResult) {
+		// 進行修改
+		behaviorService.updateBehavior(behaviorId, behaviorDTO);
+		return "redirect:/bbd/discuss/behavior/" + discussId + "/list";
+	}
+	
+	// 刪除
+	@DeleteMapping("/{discussId}/delete/{behaviorId}")
+	public String deleteBehavior(@PathVariable Integer behaviorId, @PathVariable Integer discussId, BehaviorDTO behaviorDTO, DiscussDTO discussDTO) {
+		behaviorService.deleteBehavior(behaviorId);
+		return "redirect:/bbd/discuss/behavior/" + discussId + "/list"; 
+	}
 		
 	
 }

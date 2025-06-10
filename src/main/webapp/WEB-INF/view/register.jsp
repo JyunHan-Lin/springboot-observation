@@ -34,6 +34,7 @@
 									<button type="reset">重置</button>
 									<button type="submit">傳送</button>
 								</div>
+								<a href="/login">回登入頁</a>
 							</form>
 					</fieldset>
 				</div>

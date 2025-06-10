@@ -11,8 +11,10 @@ import com.example.demo.model.entity.Behavior;
 
 @Repository
 public interface BehaviorRepository extends JpaRepository<Behavior, Integer>{
-    List<Behavior> findByDiscuss_DiscussId(Integer discussId);
     
+	List<Behavior> findByDiscuss_DiscussId(Integer discussId);
+    
+	// 查詢 userId 和 discussId 的行為
     @Query("SELECT b FROM Behavior b WHERE b.discuss.id = :discussId AND b.discuss.user.id = :userId")
     List<Behavior> findByDiscussIdAndUserId(@Param("discussId") Integer discussId, @Param("userId") Integer userId);
 

@@ -1,6 +1,7 @@
 package com.example.demo.model.dto;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
@@ -26,4 +27,5 @@ public class DiscussDTO {
 	private LocalDateTime createdTime = LocalDateTime.now();
 
 	private Integer userId;
+	
 }
