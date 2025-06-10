@@ -6,44 +6,34 @@
 
 /* 左半邊 (登入頁面) */
 .left-section-login {
-	flex: 1;  /* 左邊佔 50% */
+	flex: 3;  /* 左邊佔 50% */
   	background: url('/images/login.jpg') no-repeat center center;
   	background-size: cover;
 }
 
 /* 左半邊 (註冊頁面) */
 .left-section-register {
-	flex: 1;  /* 左邊佔 50% */
+	flex: 3;  /* 左邊佔 50% */
   	background: url('/images/register.jpg') no-repeat center center;
   	background-size: cover;
 }
 
-/* 右邊登入表單區 */
 .right-section {
-	flex: 1;  /* 右邊佔 50% */
-  	background: url('/images/blur-overlay.jpg') no-repeat center center;
-  	background-size: cover;
-  	display: flex;
-  	justify-content: center;
-  	align-items: center;
-}
-
-/* 覆蓋層，模糊背景 */
-.blur-overlay {
-  position: fixed; /* 或 absolute，視需求而定 */
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(216, 240, 216, 0.3); /* 半透明淡綠色遮罩，可調整 */
-  backdrop-filter: blur(8px); /* 模糊程度 */
-  -webkit-backdrop-filter: blur(8px); /* Safari 支援 */
-  pointer-events: none; /* 讓底下元素可操作 */
-  z-index: 0;
+	flex: 2;
+    position: relative; /* 或 absolute，視需求而定 */
+    background: gray; /* 半透明淡綠色遮罩，可調整 */
+    backdrop-filter: blur(8px); /* 模糊程度 */
+    padding: 2rem; 
+	overflow: hidden;
 }
 
 .content-wrapper {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 20px;
+	z-index: 2;
 }
 
 .index{

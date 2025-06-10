@@ -52,20 +52,20 @@
 
 /* 搜尋欄容器置中並加點間距 */
 .search-container {
-  width: 100%;
-  max-width: 600px;
+  width: 1000px;
   margin: 30px auto;
-  padding: 0 15px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 可選：淡陰影 */
 }
 
 /* 搜尋表單使用 flex 排版 */
 .search-form {
   display: flex;
   align-items: center;
-  border: 2px solid #0077cc;
+  border: 2px solid gray;
   border-radius: 30px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 119, 204, 0.2);
   background-color: #fff;
   transition: box-shadow 0.3s ease;
 }

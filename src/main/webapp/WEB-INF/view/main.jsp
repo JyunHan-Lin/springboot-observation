@@ -16,7 +16,7 @@
 		<%@ include file="/WEB-INF/view/menu.jspf" %>								
 		<!-- 搜尋欄 -->
 		<div class="search-container">
-	 		<form method="get" action="/bbd/discuss/search">
+	 		<form class="search-form" method="get" action="/bbd/discuss/search">
 	    		<input type="text" name="keyword" placeholder="輸入關鍵字搜尋..." class="search-input"/>
 	    		<button type="submit" class="search-button">搜尋</button>
 			</form>

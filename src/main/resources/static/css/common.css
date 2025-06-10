@@ -5,8 +5,8 @@
   	font-variation-settings:"wdth" 100;
 }
 
-.body {
-	background: #E8FFC4;
+body {
+	background: rgb(244, 255, 227);
 }
 
 .navbar {

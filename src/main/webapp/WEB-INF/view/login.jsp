@@ -17,7 +17,6 @@
 			<div class="left-section-login"></div>
 			
 			<div class="right-section">
-				<div class="blur-overlay">
 				  <div class="content-wrapper">
 					<h1 class="h1">Bird Behavior Document</h1>
 			 			<fieldset class="index">
@@ -37,7 +36,6 @@
 									</div>
 				 				</form>
 				 		</fieldset>
-			 		</div>
 				</div>
 			</div>
 		</div>

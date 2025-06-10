@@ -15,7 +15,7 @@
 		<%@ include file="/WEB-INF/view/menu.jspf" %>
 		
 		<form method="POST" action="/bbd/codeedit">
- 			<fieldset class="form">
+ 			<fieldset class="discussion-form">
  				<legend class="title">會員資料變更</legend>
  				
  				<div class="title">密碼變更</div>
