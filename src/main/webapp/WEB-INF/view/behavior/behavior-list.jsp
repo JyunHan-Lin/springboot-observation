@@ -12,7 +12,12 @@
 		<link rel="stylesheet" href="/css/common.css">
 		<link rel="stylesheet" href="/css/behavior-list.css">
 		<title>Bird Behavior Document</title>
+		<!-- LOGO -->
 		<link rel="icon" type="image/png" href="/images/icon.png">
+		<!-- DataTables -->
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+		<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>		
 	</head>
 	<body class="fontstyle">
 		<!-- menu bar include -->
@@ -63,5 +68,16 @@
 				</table>
 			</fieldset>
 		</div>
+		<!-- DataTables 初始化腳本 -->
+		<script>
+		  $(document).ready(function() {
+		    $('table').DataTable({
+		      "language": {
+		        "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/zh-HANT.json"
+		      }
+		    });
+		  });
+		</script>
+		
 	</body>
 </html>

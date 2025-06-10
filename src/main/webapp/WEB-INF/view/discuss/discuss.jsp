@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="/css/basic.css">
 		<link rel="stylesheet" href="/css/common.css">
 		<link rel="stylesheet" href="/css/discuss.css">
+		<link rel="stylesheet" href="/css/behavior.css">
 		<title>Bird Behavior Document</title>
 		<link rel="icon" type="image/png" href="/images/icon.png">
 		<%@ include file="/WEB-INF/view/charts/googlecharts-head.jspf" %>	
@@ -21,9 +22,8 @@
 			    <!-- 標題與按鈕列 -->
 			    <div class="header-row">
 			    	<h2 class="title-text">${discussDTO.title}</h2>
-		    	  	<div>
+		    	  	<div class="btn-group">
 		        		<a href="/bbd/discuss/update/${ discussDTO.discussId }" class="btn btn-danger">編輯</a>
-		        		<p>       	
 						<form method="post" action="/bbd/discuss/delete/${ discussDTO.discussId }">
 							<input type="hidden" name="_method" value="DELETE" />
 							<button type="submit" class="btn btn-danger" >刪除</button>

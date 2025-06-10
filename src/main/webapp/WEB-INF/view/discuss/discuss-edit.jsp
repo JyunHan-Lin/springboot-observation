@@ -10,7 +10,7 @@
 		<title>🐣 Bird Behavior Document</title>
 		<link rel="stylesheet" href="/css/basic.css">
 		<link rel="stylesheet" href="/css/common.css">
-		<link rel="stylesheet" href="/css/discuss-form.css">
+		<link rel="stylesheet" href="/css/form.css">
 	</head>
 	<body>
 		<!-- menu bar include -->

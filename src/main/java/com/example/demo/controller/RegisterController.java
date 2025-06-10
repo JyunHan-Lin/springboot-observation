@@ -51,7 +51,7 @@ public class RegisterController {
 	    model.addAttribute("resultTitle", resultTitle);
 	    model.addAttribute("resultMessage", resultMessage);
 
-	    return "result";
+	    return "message/result";
 	}
 }
 

@@ -1,6 +1,6 @@
 /* 容器總寬與左右分欄設定 */
 .page-container {
-  width: 1000px;
+  width: 1200px;
   margin: 0 auto;
   display: flex;
   gap: 20px;
@@ -87,43 +87,6 @@
   resize: vertical;
 }
 
-.time-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-
-.time-row label {
-  white-space: nowrap; /* 避免文字換行 */
-}
-
-.time-row input[type="time"] {
-  width: 130px;
-}
-
-.form-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-width: 120px; /* 可根據需要調整 */
-}
-
-input[type="text"] {
-  padding: 4px 8px;
-  font-size: 14px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
 /* 按鈕樣式 */
 .btn {
   padding: 6px 12px;
@@ -133,6 +96,12 @@ input[type="text"] {
   font-size: 14px;
   text-decoration: none;
   display: inline-block;
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px; /* 按鈕間距 */
+  align-items: center;
 }
 
 /* 編輯、刪除按鈕 */

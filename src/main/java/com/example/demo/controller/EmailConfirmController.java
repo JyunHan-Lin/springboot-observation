@@ -19,10 +19,10 @@ public class EmailConfirmController {
 	public String confirmPage(@RequestParam String username, Model model) {
 	    boolean success = userService.confirmEmail(username);
 	    if (success) {
-	        return "mailsuccess"; // 驗證成功, 導入JSP
+	        return "message/mailsuccess"; // 驗證成功, 導入JSP
 	    } else {
 	        model.addAttribute("message", "驗證失敗，請重新註冊或聯絡管理員");
-	        return "mailfail"; // 驗證失敗, 導入JSP
+	        return "message/mailfail"; // 驗證失敗, 導入JSP
 	    }
 	}
 

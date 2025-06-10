@@ -5,6 +5,10 @@
   	font-variation-settings:"wdth" 100;
 }
 
+.body {
+	background: #E8FFC4;
+}
+
 .navbar {
   background: linear-gradient(to right, white, rgb(1, 69, 1));  /* 漸層背景 */
   padding: 5px 0;
@@ -14,7 +18,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }

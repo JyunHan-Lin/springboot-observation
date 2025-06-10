@@ -47,7 +47,7 @@ public class LoginController {
 		// 將錯誤資料丟給 error.jsp
 		model.addAttribute("message", e.getMessage());
 		e.printStackTrace();
-		return "error";
+		return "message/error";
 	}
 	// 將憑證放到 session
 	session.setAttribute("userCert", userCert);

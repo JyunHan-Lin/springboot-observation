@@ -7,11 +7,11 @@
   <fieldset class="discussion-form">
     <legend class="title">建立討論串</legend>
     	標題: <sp:input type="text" path="title" placeholder="請輸入標題" required="required" /><p />
-    	<p/>
+    	<p>
     	描述: <sp:input type="text" path="description" placeholder="請描述內容" required="required" /><p />
-    	<p/>
+    	<p>
     	Youtube連結: <sp:input type="text" path="youtubeVideoId" placeholder="請輸入連結" /><p />
-    	<p/>
+    	<p>
     	<div class="button-wrapper">
 			<button type="reset">重置</button>
 	    	<button type="submit">建立</button>
