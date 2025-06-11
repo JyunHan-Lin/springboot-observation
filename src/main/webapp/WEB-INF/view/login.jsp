@@ -9,12 +9,6 @@
 		<link rel="stylesheet" href="/css/user.css">
 		<title>OrniBase</title>
 		<link rel="icon" type="image/png" href="/images/icon.png">
-		<script>
-		  document.querySelector(".button-group img").addEventListener("click", function() {
-		    this.src = "/user/authcode?" + new Date().getTime(); // 防止快取
-		  });
-		</script>
-		
 	</head>
 	<body class="fontstyle">
 		<!-- menu bar include -->
@@ -36,6 +30,12 @@
 				  					<img src="/user/authcode" title="驗證碼" alt="驗證碼" />
 								</div>
 							
+								<script>
+								  document.querySelector(".button-group img").addEventListener("click", function() {
+								    this.src = "/user/authcode?" + new Date().getTime(); // 防止快取
+								  });
+								</script>
+								
 								<div class="button-group">
 									<button type="reset" >重置</button>
 							 		<button type="submit">登入</button>

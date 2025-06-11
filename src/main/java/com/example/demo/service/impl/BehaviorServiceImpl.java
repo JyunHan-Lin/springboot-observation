@@ -46,7 +46,8 @@ public class BehaviorServiceImpl implements BehaviorService{
         behavior.setEndTime(behaviorDTO.getEndTime());
         behavior.setSubject(behaviorDTO.getSubject());
         behavior.setAction(behaviorDTO.getAction());
-        
+        behavior.setFood(behaviorDTO.getFood());
+
         behavior.setTemperature(behaviorDTO.getTemperature());
         behavior.setNote(behaviorDTO.getNote());
 

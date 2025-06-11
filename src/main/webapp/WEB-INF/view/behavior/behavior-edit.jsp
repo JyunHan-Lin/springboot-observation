@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!-- Spring Form 表單標籤 -->
-<%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form" %>
-    
+<%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,56 +15,72 @@
 	</head>
 	<body>
 		<!-- menu bar include -->
-		<%@ include file="/WEB-INF/view/menu.jspf" %>								
-		
-		<sp:form class="fontstyle" method="post" modelAttribute="behaviorDTO" action="/bbd/discuss/behavior/${ behaviorDTO.discussId }/edit/${ behaviorDTO.behaviorId }" >
-		  <fieldset class="discussion-form">
-			<input type="hidden" name="_method" value="PUT" />
-		    <legend class="title">編輯行為</legend>
-		    	<label>日期：</label>
-	    	  	<input type="date" name="date" />
+		<%@ include file="/WEB-INF/view/menu.jspf"%>
 	
-				<!-- 加上這個容器 -->
-				<div class="time-row">
-				  <label for="startTime">時間：</label>
-				  <input type="time" name="startTime" id="startTime" />
-				  <span>～</span>
-				  <input type="time" name="endTime" id="endTime" />
+		<div class="right-section fontstyle">
+			<div class="form-title">行為紀錄</div>
+			<p>
+				<sp:form method="post" modelAttribute="behaviorDTO"
+					action="${pageContext.request.contextPath}/bbd/discuss/behavior/${discussDTO.discussId}">
+					<div class="form-inline">
+						<label for="date">日期：</label> <input class="date" type="date"
+							name="date" />
+					</div>
+	
+					<label>時間區間：</label>
+					<input type="time" name="startTime" id="startTime"
+						style="width: 120px;" />
+					<span>～</span>
+					<input type="time" name="endTime" id="endTime" style="width: 120px;" />
+	
+					<select name="subject">
+						<option value="">請選擇對象</option>
+						<option value="成鳥A">成鳥A</option>
+						<option value="成鳥B">成鳥B</option>
+						<option value="幼鳥A">幼鳥A</option>
+					</select>
+	
+					<select name="action">
+						<option value="">請選擇行為</option>
+						<option value="飛行">飛行</option>
+						<option value="進食">進食</option>
+						<option value="其他">其他</option>
+					</select>
+	
+					<select name="food">
+						<option value="">請選擇食物</option>
+						<option value="哺乳類">哺乳類</option>
+						<option value="鳥類">鳥類</option>
+						<option value="魚類">魚類</option>
+						<option value="爬蟲類">爬蟲類</option>
+						<option value="兩生類">兩生類</option>
+					</select>
+	
+					<div class="form-row">
+						<div class="form-group">
+							<input type="text" name="temperature" placeholder="輸入溫度(℃):" />
+						</div>
+					</div>
+	
+					<label>備註：</label>
+					<textarea name="note" maxlength="100" placeholder="限100字內"></textarea>
+					<div class="button-group">
+						<button type="submit">送出</button>
+					</div>
+				</sp:form>
+				<div class="button-group">
+					<a class="button-link" href="${pageContext.request.contextPath}/bbd/discuss/behavior/${discussDTO.discussId}/list">查看紀錄清單</a>
 				</div>
-
-	      		<label>對象：</label>
-	      		<select name="subject">
-	        	<option value="">請選擇</option>
-	        	<option value="成鳥A">成鳥A</option>
- 					<option value="成鳥B">成鳥B</option>
- 					<option value="幼鳥A">幼鳥A</option>
-	      		</select>
-	
-	      		<label>行為：</label>
-			    <select name="action">
-			    <option value="">請選擇</option>
-	        	<option value="飛行">飛行</option>
- 					<option value="進食">進食</option>
- 					<option value="其他">其他</option>
-	      		</select>
-
-				<!-- 溫度與濕度欄位在同一行 -->
-				<div class="form-row">
-				  <div class="form-group">
-				    <label>溫度：</label>
-				    <input type="text" name="temperature" placeholder="℃" />
-				  </div>
-				  <div class="form-group">
-				    <label>濕度：</label>
-				    <input type="text" name="humidity" placeholder="%" />
-				  </div>
-				</div>
-
-	      		<label>備註：</label>
-	      		<textarea name="note" maxlength="100" placeholder="限100字內"></textarea>
-	
-				<button type="submit" class="btn btn-success">送出</button>	
-		  </fieldset>
-		</sp:form>
+			</div>
+			<script>
+					const startTimeInput = document.getElementById("startTime");
+					const endTimeInput = document.getElementById("endTime");
+			
+				 	startTimeInput.addEventListener("change", function () {
+			  		if (startTimeInput.value) {
+			    		endTimeInput.focus();  // 自動跳到下一欄
+			  		}
+					});
+			</script>
 	</body>
 </html>

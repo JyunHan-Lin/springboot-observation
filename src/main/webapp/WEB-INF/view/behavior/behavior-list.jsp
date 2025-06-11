@@ -34,6 +34,7 @@
 							<th>結束時間</th>
 							<th>對象</th>
 							<th>行為</th>
+							<th>食物</th>
 							<th>溫度</th>
 							<th>備註</th>
 							<th>記錄日期</th>
@@ -49,6 +50,7 @@
 								<td>${ behaviorDTO.endTime }</td>
 								<td>${ behaviorDTO.subject }</td>
 								<td>${ behaviorDTO.action }</td>
+								<td>${ behaviorDTO.food }</td>
 								<td>${ behaviorDTO.temperature }</td>
 								<td>${ behaviorDTO.note }</td>
 								<td>${ behaviorDTO.formattedCreatedTime }</td>

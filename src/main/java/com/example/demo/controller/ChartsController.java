@@ -1,5 +1,9 @@
 package com.example.demo.controller;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -48,40 +52,37 @@ public class ChartsController {
 		    // 行為資料
 		    List<BehaviorDTO> behaviors = behaviorService.getBehaviorsByDiscussAndUser(discussId, userId);
 
-		    // google charts
-		    Map<String, Long> actionCountBySubject 
-		    	= behaviors.stream()
-		        		   .collect(Collectors.groupingBy(BehaviorDTO::getSubject,
-		        				    Collectors.mapping(BehaviorDTO::getAction, Collectors.toSet())))
-		        		   .entrySet().stream()
-		        		   .collect(Collectors.toMap(
-		        				   Map.Entry::getKey, e -> (long) e.getValue().size()));
+		    // google charts1 (對象1天行為活動)
+		    // 先計算出行為的時間, 再算出佔一天多少比例
+		    Map<String, Long> actionDuration = 
+		    		behaviors.stream()
+		    	    		 .filter(b -> b.getSubject().equals("幼鳥A") && b.getDate().equals(LocalDate.now()))
+		    	    		 .collect(Collectors.groupingBy(BehaviorDTO::getAction,
+		    	              Collectors.summingLong(b -> java.time.Duration.between(b.getStartTime(), b.getEndTime()).toMinutes())
+		    	    ));
+
+		    	    model.addAttribute("actionDuration", actionDuration);
+
+		    // google charts2 (所有對象1天行為區間)
+    	    List<List<Object>> timelineData = 
+    	    		behaviors.stream()
+    	    	    	     .filter(b -> b.getDate().equals(LocalDate.now())) // 只取某一天
+    	    	    	     .map(b -> List.of(b.getSubject() + "：" + b.getAction(), null, 
+    	    	                       LocalTime.of(b.getStartTime().getHour(), b.getStartTime().getMinute()), 
+    	    	                       LocalTime.of(b.getEndTime().getHour(), b.getEndTime().getMinute())))
+    	    	    	     .collect(Collectors.toList());
+
+    	    		model.addAttribute("timelineData", timelineData);
 		    
-		    model.addAttribute("actionCountBySubject", actionCountBySubject);
-		    
-		    
-		    // google charts
-		    Map<String, Long> actionCountBySubject1 
-		    	= behaviors.stream()
-		        		   .collect(Collectors.groupingBy(BehaviorDTO::getSubject,
-		        				    Collectors.mapping(BehaviorDTO::getAction, Collectors.toSet())))
-		        		   .entrySet().stream()
-		        		   .collect(Collectors.toMap(
-		        				   Map.Entry::getKey, e -> (long) e.getValue().size()));
-		    
-		    model.addAttribute("actionCountBySubject1", actionCountBySubject1);
-		    
-		    
-		    // google charts
-		    Map<String, Long> actionCountBySubject2 
-		    	= behaviors.stream()
-		        		   .collect(Collectors.groupingBy(BehaviorDTO::getSubject,
-		        				    Collectors.mapping(BehaviorDTO::getAction, Collectors.toSet())))
-		        		   .entrySet().stream()
-		        		   .collect(Collectors.toMap(
-		        				   Map.Entry::getKey, e -> (long) e.getValue().size()));
-		    
-		    model.addAttribute("actionCountBySubject2", actionCountBySubject2);
+		    // google charts3 (一週食物種類 + 數量)
+    		Map<String, Long> foodCount = 
+    				behaviors.stream()
+    			    		 .filter(b -> b.getSubject().equals("幼鳥A")) // 指定對象
+    			    		 .filter(b -> b.getDate().isAfter(LocalDate.now().minusDays(7)))
+    			    		 .collect(Collectors.groupingBy(BehaviorDTO::getFood, Collectors.counting()));
+
+    				model.addAttribute("foodCount", foodCount);
+
 		    
 		    return "discuss/discuss"; // JSP頁面名稱
 		}
