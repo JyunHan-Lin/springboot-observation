@@ -54,6 +54,9 @@ public class Behavior {
 	@Column(name = "action", nullable = false)
     private String action;
 	
+	@Column(name = "food")
+	private String food;
+	
 	@Column(name = "temperature")
     private Float temperature;
 	

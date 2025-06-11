@@ -38,11 +38,10 @@
 
 a {
   color: #f6f6f6;
-  text-decoration: none; /* 取消底線 */
 }
 
 a:hover {
-  color: gray;
+  color: rgb(2, 149, 2);
   text-decoration: underline; /* 滑過時加底線 */
 }
 

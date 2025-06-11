@@ -1,40 +1,37 @@
-.discussion-form {
- width: 400px;
- margin: 50px auto; /* 水平置中，並往下推一點 */
- padding: 20px;
- border: 2px solid #ccc;
- position: relative;
- background-color: #f9f9f9;
+/* 右側表單區 */
+.right-section {
+  width: 34%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  height: 520px;
+  background: white;
 }
 
-.discussion-form input,
-.discussion-form textarea {
- width: 100%;
- padding: 10px;
- margin-top: 5px;
- margin-bottom: 15px;
- box-sizing: border-box;
- font-size: 16px;
+/* 表單區標題 */
+.form-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
-.discussion-form textarea {
- height: 100px; /* 讓描述輸入框大一點 */
- resize: vertical;
+/* 輸入欄位統一樣式 */
+.right-section input,
+.right-section select,
+.right-section textarea {
+  width: 100%;
+  padding: 6px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
 }
 
-.discussion-form button {
- padding: 10px 20px;   /* 上下10px、左右20px */
- font-size: 16px;      /* 字體大小 */
- border-radius: 5px;   /* 圓角 */
- background-color: #4CAF50;
- color: white;
- border: none;
- cursor: pointer;
- text-align:right;
-}
-
-.discussion-form button:hover {
- background-color: #45a049;
+/* 備註欄 */
+.right-section textarea {
+  resize: vertical;
 }
 
 .title{
@@ -77,3 +74,31 @@ input[type="text"] {
  width: 100%;
  box-sizing: border-box;
 }
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.button-group button,
+.button-group .button-link {
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: rgb(2, 149, 2);
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  flex: 1;
+  transition: background-color 0.3s ease;
+}
+
+.button-group button:hover,
+.button-group .button-link:hover {
+  background-color: rgba(0, 85, 0);
+}
+

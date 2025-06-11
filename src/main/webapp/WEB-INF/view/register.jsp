@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="/css/basic.css">
 		<link rel="stylesheet" href="/css/common.css">
 		<link rel="stylesheet" href="/css/user.css">
-		<title>Bird Behavior Document</title>
+		<title>OrniBase</title>
 		<link rel="icon" type="image/png" href="/images/icon.png">
 	</head>
 	<body class="fontstyle" >
@@ -20,7 +20,7 @@
 			<div class="right-section">
 				<div class="blur-overlay">
 				    <div class="content-wrapper">
-						<h1 class="h1">Bird Behavior Document</h1>
+						<h1 class="h1">OrniBase</h1>
 							<fieldset class="index">
 								<legend class="h2">&nbsp;會員註冊&nbsp;</legend>
 									<form class="user" method="POST" action="/register">

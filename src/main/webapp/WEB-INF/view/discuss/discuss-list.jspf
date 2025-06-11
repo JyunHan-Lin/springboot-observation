@@ -5,7 +5,7 @@
 
 <div class="video-list-container">
 	<fieldset>
-	<legend>已建立的討論串列表</legend>
+	<legend class="h2">已建立的討論串列表</legend>
 		<div class="video-list">
 			<c:forEach var="discussDTO" items="${discussList}">
 			  <div class="video-card">

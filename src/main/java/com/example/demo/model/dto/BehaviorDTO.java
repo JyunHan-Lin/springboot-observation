@@ -19,6 +19,7 @@ public class BehaviorDTO {
     private LocalTime endTime;
     private String subject;
     private String action;
+	private String food;
     private Float temperature;
     private String note;
 	private LocalDateTime createdTime = LocalDateTime.now();

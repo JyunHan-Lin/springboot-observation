@@ -59,6 +59,30 @@ public class ChartsController {
 		    
 		    model.addAttribute("actionCountBySubject", actionCountBySubject);
 		    
+		    
+		    // google charts
+		    Map<String, Long> actionCountBySubject1 
+		    	= behaviors.stream()
+		        		   .collect(Collectors.groupingBy(BehaviorDTO::getSubject,
+		        				    Collectors.mapping(BehaviorDTO::getAction, Collectors.toSet())))
+		        		   .entrySet().stream()
+		        		   .collect(Collectors.toMap(
+		        				   Map.Entry::getKey, e -> (long) e.getValue().size()));
+		    
+		    model.addAttribute("actionCountBySubject1", actionCountBySubject1);
+		    
+		    
+		    // google charts
+		    Map<String, Long> actionCountBySubject2 
+		    	= behaviors.stream()
+		        		   .collect(Collectors.groupingBy(BehaviorDTO::getSubject,
+		        				    Collectors.mapping(BehaviorDTO::getAction, Collectors.toSet())))
+		        		   .entrySet().stream()
+		        		   .collect(Collectors.toMap(
+		        				   Map.Entry::getKey, e -> (long) e.getValue().size()));
+		    
+		    model.addAttribute("actionCountBySubject2", actionCountBySubject2);
+		    
 		    return "discuss/discuss"; // JSP頁面名稱
 		}
 }

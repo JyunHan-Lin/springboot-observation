@@ -8,7 +8,8 @@
 		<link rel="stylesheet" href="/css/common.css">
 		<link rel="stylesheet" href="/css/discuss.css">
 		<link rel="stylesheet" href="/css/behavior.css">
-		<title>Bird Behavior Document</title>
+		<link rel="stylesheet" href="/css/charts.css">
+		<title>OrniBase</title>
 		<link rel="icon" type="image/png" href="/images/icon.png">
 		<%@ include file="/WEB-INF/view/charts/googlecharts-head.jspf" %>	
 	</head>

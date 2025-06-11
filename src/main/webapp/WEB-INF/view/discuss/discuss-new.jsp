@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="/css/basic.css">
 		<link rel="stylesheet" href="/css/common.css">
 		<link rel="stylesheet" href="/css/form.css">
-		<title>Bird Behavior Document</title>
+		<title>OrniBase</title>
 		<link rel="icon" type="image/png" href="/images/icon.png">
 	</head>
 	<body class="fontstyle">

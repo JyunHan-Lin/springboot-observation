@@ -4,7 +4,7 @@
     
 <nav class="navbar fontstyle">
 	<div class="nav-container">
-		<div class="logo"><a href="/bbd"><img src="/images/logo.png" height="30"></a></div>
+		<div class="logo"><a href="/bbd"><img src="/images/newlogo.png" height="30"></a></div>
 		<ul class="nav-list">
 			<li><a href="/bbd/discuss/new">建立討論串</a></li> 
 			<li><a href="/bbd/codeedit">會員資料變更</a></li>

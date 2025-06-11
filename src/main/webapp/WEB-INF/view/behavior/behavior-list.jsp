@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="/css/basic.css">
 		<link rel="stylesheet" href="/css/common.css">
 		<link rel="stylesheet" href="/css/behavior-list.css">
-		<title>Bird Behavior Document</title>
+		<title>OrniBase</title>
 		<!-- LOGO -->
 		<link rel="icon" type="image/png" href="/images/icon.png">
 		<!-- DataTables -->
@@ -68,6 +68,7 @@
 				</table>
 			</fieldset>
 		</div>
+		
 		<!-- DataTables 初始化腳本 -->
 		<script>
 		  $(document).ready(function() {

@@ -13,6 +13,16 @@
 	      ['${fn:escapeXml(entry.key)}', ${entry.value}]<c:if test="${!status.last}">,</c:if>
 	    </c:forEach>
 	  ];
+	  var actionCountBySubject1 = [
+		    <c:forEach var="entry" items="${actionCountBySubject1}" varStatus="status">
+		      ['${fn:escapeXml(entry.key)}', ${entry.value}]<c:if test="${!status.last}">,</c:if>
+		    </c:forEach>
+		  ];
+	  var actionCountBySubject2 = [
+		    <c:forEach var="entry" items="${actionCountBySubject2}" varStatus="status">
+		      ['${fn:escapeXml(entry.key)}', ${entry.value}]<c:if test="${!status.last}">,</c:if>
+		    </c:forEach>
+		  ];
 	</script>
    
   	<script type="text/javascript">
@@ -24,6 +34,8 @@
 
      function drawChart() {
        drawActionCountBySubjectChart();
+       drawActionCountBySubject1Chart();
+       drawActionCountBySubject2Chart();
      }
 
      // Callback that creates and populates a data table,
@@ -37,10 +49,10 @@
 
    	  var options = {
    	    title: '每個對象的行為種類數',
-   	    width: 300,
-   	    height: 200,
+   	    width: 390,
+   	    height: 270,
    	    hAxis: { title: '對象' },
-   	    vAxis: { title: '行為種類數' }
+   	    vAxis: { title: '行為種類數' },
    	  	legend: { position: 'none' },
    	  	chartArea: { width: '70%', height: '70%' },
    	  	colors: ['#3366cc']
@@ -49,6 +61,46 @@
    	  var chart = new google.visualization.BarChart(document.getElementById('actioncount_chart_div'));
    	  chart.draw(data, options);
    	}
+     
+   	function drawActionCountBySubject1Chart() {
+     	  var data = new google.visualization.DataTable();
+     	  data.addColumn('string', '對象');
+     	  data.addColumn('number', '行為種類數');
+     	  data.addRows(actionCountBySubject1);
+
+     	  var options = {
+     	    title: '每個對象的行為種類數',
+     	    width: 390,
+     	    height: 270,
+     	    hAxis: { title: '對象' },
+     	    vAxis: { title: '行為種類數' },
+     	  	legend: { position: 'none' },
+     	  	chartArea: { width: '70%', height: '70%' },
+     	  	colors: ['#3366cc']
+     	  };
+
+     	  var chart = new google.visualization.BarChart(document.getElementById('actioncount_chart_div1'));
+     	  chart.draw(data, options);
+     	}
    	
-   	console.log("actionCountBySubject:", actionCountBySubject);
+   	function drawActionCountBySubject2Chart() {
+     	  var data = new google.visualization.DataTable();
+     	  data.addColumn('string', '對象');
+     	  data.addColumn('number', '行為種類數');
+     	  data.addRows(actionCountBySubject2);
+
+     	  var options = {
+     	    title: '每個對象的行為種類數',
+     	    width: 390,
+     	    height: 270,
+     	    hAxis: { title: '對象' },
+     	    vAxis: { title: '行為種類數' },
+     	  	legend: { position: 'none' },
+     	  	chartArea: { width: '70%', height: '70%' },
+     	  	colors: ['#3366cc']
+     	  };
+
+     	  var chart = new google.visualization.BarChart(document.getElementById('actioncount_chart_div2'));
+     	  chart.draw(data, options);
+     	}
    </script>

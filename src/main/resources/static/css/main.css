@@ -1,17 +1,18 @@
 .video-list-container {
   width: 1200px;
-  margin: 30px auto;
+  margin: 0 auto;
+  background: white;
 }
 
 .video-list {	
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
 }
 
 .video-card {
-  width: 30%;
+  width: 17%;
   background-color: #fdfdfd;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -50,13 +51,17 @@
   text-decoration: underline;
 }
 
+.h2{
+	font-size:20px;
+    font-weight: bold;
+}
+
 /* 搜尋欄容器置中並加點間距 */
 .search-container {
-  width: 1000px;
-  margin: 30px auto;
+  width: 600px;
+  margin: 40px auto 0 auto;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 可選：淡陰影 */
+  border-radius: 10px;
 }
 
 /* 搜尋表單使用 flex 排版 */
@@ -74,8 +79,8 @@
 .search-input {
   flex: 1;
   border: none;
-  padding: 12px 20px;
-  font-size: 16px;
+  padding: 8px 16px;
+  font-size: 14px;
   outline: none;
   color: #333;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -89,11 +94,11 @@
 
 /* 按鈕樣式 */
 .search-button {
-  background-color: #004000;
+  background-color: rgb(2, 149, 2);
   border: none;
   color: white;
-  padding: 12px 25px;
-  font-size: 16px;
+  padding: 8px 20px;
+  font-size: 14px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -102,11 +107,8 @@
 
 /* 按鈕 hover 效果 */
 .search-button:hover {
-  background-color: #005fa3;
+  background-color: rgba(0, 85, 0);
 }
 
-/* 表單聚焦時陰影加強 */
-.search-form:focus-within {
-  box-shadow: 0 6px 12px rgba(0, 119, 204, 0.4);
-}
+
 

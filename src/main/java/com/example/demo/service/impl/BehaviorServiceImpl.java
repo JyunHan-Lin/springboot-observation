@@ -95,8 +95,8 @@ public class BehaviorServiceImpl implements BehaviorService{
 	}
 
 	@Override
-	public void updateBehavior(Integer behaviorId, LocalDate date, LocalTime startTime, LocalTime endTime, String subject, String action, Float temperature, String note) {
-		BehaviorDTO behaviorDTO = new BehaviorDTO(behaviorId, date, startTime, endTime, subject, action, temperature, note, null, null);
+	public void updateBehavior(Integer behaviorId, LocalDate date, LocalTime startTime, LocalTime endTime, String subject, String action, String food, Float temperature, String note) {
+		BehaviorDTO behaviorDTO = new BehaviorDTO(behaviorId, date, startTime, endTime, subject, action, food, temperature, note, null, null);
 		updateBehavior(behaviorId, behaviorDTO);		
 	}
 

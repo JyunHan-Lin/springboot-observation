@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="/css/basic.css">
 		<link rel="stylesheet" href="/css/common.css">		
 		<link rel="stylesheet" href="/css/main.css">
-		<title>Bird Behavior Document</title>
+		<title>OrniBase</title>
 		<link rel="icon" type="image/png" href="/images/icon.png">
 	</head>
 	<body class="fontstyle">
@@ -17,7 +17,7 @@
 		<!-- 搜尋欄 -->
 		<div class="search-container">
 	 		<form class="search-form" method="get" action="/bbd/discuss/search">
-	    		<input type="text" name="keyword" placeholder="輸入關鍵字搜尋..." class="search-input"/>
+	    		<input type="text" name="keyword" placeholder="輸入關鍵字搜尋討論串..." class="search-input"/>
 	    		<button type="submit" class="search-button">搜尋</button>
 			</form>
 		</div>

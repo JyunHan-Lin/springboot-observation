@@ -21,10 +21,14 @@
 .right-section {
 	flex: 2;
     position: relative; /* 或 absolute，視需求而定 */
-    background: gray; /* 半透明淡綠色遮罩，可調整 */
     backdrop-filter: blur(8px); /* 模糊程度 */
     padding: 2rem; 
 	overflow: hidden;
+    background-color: gray;
+  	background-image: 
+    	repeating-linear-gradient(45deg, gray, #f0f0f0 1px, transparent 1px, transparent 10px),
+    	repeating-linear-gradient(-45deg, gray, #f0f0f0 1px, transparent 1px, transparent 10px);
+
 }
 
 .content-wrapper {
@@ -69,6 +73,10 @@ form.user button {
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 文字陰影 */
 }
 
+.h1{
+	font-size: 50px;
+}
+
 .h2{
 	color:white;
 	font-size:25px;
@@ -76,9 +84,15 @@ form.user button {
 
 .button-group {
 	display: flex;
-  	align-items: center;      /* 垂直置中 */
   	gap: 5px;                /* 元素之間的間距 */
   	margin-bottom: 5px;      /* 與其他欄位分開 */
+}
+
+.button-group input {
+  flex: 1;
+  height: 40px;       /* 設定高度，與圖片一致 */
+  padding: 8px;
+  font-size: 14px;
 }
 
 .button-group input {
@@ -86,7 +100,7 @@ form.user button {
 }
 
 .button-group img {
-  	height: 35px;             /* 控制驗證碼圖片大小，可依需求調整 */
+  	height: 39px;             /* 控制驗證碼圖片大小，可依需求調整 */
   	cursor: pointer;          /* 滑鼠變小手（用來刷新驗證碼） */
 }
 
@@ -100,6 +114,6 @@ a {
 }
 
 a:hover {
-  color: gray;
+  color: rgb(2, 149, 2);
   text-decoration: underline; /* 滑過時加底線 */
 }
