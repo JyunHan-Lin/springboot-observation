@@ -67,18 +67,33 @@ public class ChartsController {
     	    List<List<Object>> timelineData = 
     	    		behaviors.stream()
     	    	    	     .filter(b -> b.getDate().equals(LocalDate.now())) // 只取某一天
-    	    	    	     .map(b -> List.of(b.getSubject() + "：" + b.getAction(), null, 
-    	    	                       LocalTime.of(b.getStartTime().getHour(), b.getStartTime().getMinute()), 
-    	    	                       LocalTime.of(b.getEndTime().getHour(), b.getEndTime().getMinute())))
-    	    	    	     .collect(Collectors.toList());
-
+    	    	    	     .map(b -> {
+    	    	    	    	    List<Object> row = new java.util.ArrayList<>();
+    	    	    	    	    row.add(b.getSubject() + "：" + b.getAction());
+    	    	    	    	    row.add(null);
+    	    	    	    	    row.add(LocalTime.of(b.getStartTime().getHour(), b.getStartTime().getMinute()));
+    	    	    	    	    row.add(LocalTime.of(b.getEndTime().getHour(), b.getEndTime().getMinute()));
+    	    	    	    	    return row;
+    	    	    	    })
+    	    	    	    .collect(Collectors.toList()); 
     	    		model.addAttribute("timelineData", timelineData);
+    	    
+    	    		/**
+    	    		 * 產出來的List<List<Object>>會長這樣
+    	    		 * [
+  						 ["幼鳥A：覓食", null, LocalTime.of(8, 30), LocalTime.of(9, 0)],
+  						 ["幼鳥B：睡覺", null, LocalTime.of(9, 15), LocalTime.of(10, 0)]
+					   ]
+					   這就是 Google Charts Timeline 的預設格式（Label, Row ID/null, Start Time, End Time）
+    	    		 **/
+    	    		
 		    
 		    // google charts3 (一週食物種類 + 數量)
     		Map<String, Long> foodCount = 
     				behaviors.stream()
     			    		 .filter(b -> b.getSubject().equals("幼鳥A")) // 指定對象
     			    		 .filter(b -> b.getDate().isAfter(LocalDate.now().minusDays(7)))
+    			    		 .filter(b -> b.getFood() != null) // 避免為空值
     			    		 .collect(Collectors.groupingBy(BehaviorDTO::getFood, Collectors.counting()));
 
     				model.addAttribute("foodCount", foodCount);
