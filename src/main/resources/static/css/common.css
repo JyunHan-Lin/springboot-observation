@@ -29,17 +29,10 @@ body {
   padding: 0 20px;
 }
 
-/* 待改 */
-.logo a {
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
 .nav-list {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 5px;
   margin: 0;
   padding: 0;
 }
@@ -48,12 +41,12 @@ body {
   color: white;
   text-decoration: none;
   font-size: 16px;
-  padding: 8px 12px;
+  padding: 4px 12px;
   position: relative;
   transition: color 0.3s, background-color 0.3s;
 }
 
-/* 漸層底亮起＋底線動畫 */
+/* 漸層底亮起 + 底線 */
 .nav-list li a::after {
   content: "";
   position: absolute;
@@ -65,7 +58,7 @@ body {
 }
 
 .nav-list li a:hover {
-  background-color: rgba(0, 85, 0);
+  background-color: rgba(0, 140, 0);
   color: white; /* 保持白字 */
 }
 

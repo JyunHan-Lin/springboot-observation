@@ -42,7 +42,7 @@
 /* 圖表區塊 */
 .placeholder-box {
   width: 1200px; 	
-  height: 280px;
+  height: 300px;
   border: 1px solid #ccc;
   margin-top: 10px;
   flex-wrap: wrap;           /* 如果螢幕太小可自動換行 */

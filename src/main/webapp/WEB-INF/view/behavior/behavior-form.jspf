@@ -9,15 +9,15 @@
 	<sp:form method="post" modelAttribute="behaviorDTO"
 		action="${pageContext.request.contextPath}/bbd/discuss/behavior/${discussDTO.discussId}">
 		<div class="form-inline">
-			<label for="date">日期：</label> <input class="date" type="date"
-				name="date" />
+			<label for="date">日期：</label> 
+			<input class="date" type="date" name="date" />
 		</div>
-
-		<label>時間區間：</label>
-		<input type="time" name="startTime" id="startTime"
-			style="width: 120px;" />
-		<span>～</span>
-		<input type="time" name="endTime" id="endTime" style="width: 120px;" />
+		<div class="time-row">
+			<label>時間區間：</label>
+			<input type="time" name="startTime" id="startTime" />
+			<span>～</span>
+			<input type="time" name="endTime" id="endTime" />
+		</div>
 
 		<select name="subject">
 			<option value="">請選擇對象</option>
